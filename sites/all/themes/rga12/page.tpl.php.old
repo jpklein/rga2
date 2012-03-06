@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language ?>" lang="<?php print $language ?>">
+  <head>
+    <title><?php print $head_title ?></title>
+    <?php print $head ?>
+    <?php print $scripts ?>
+    <?php print $styles ?>
+    <style type="text/css" media="print">@import "<?php print base_path() . path_to_theme() ?>/style.css";</style>
+  </head>
+  <body<?php print phptemplate_body_class($sidebar_left, $sidebar_right); ?>>
+
+<!-- Layout -->
+<div id="wrapper">
+<div id="container" class="clear-block">
+	
+      <div id="header">
+		<div id="header-region" class="clear-block"><?php print $header; ?>
+			<img name="toplogoname" src="<?php print base_path() . path_to_theme() ?>/images/toplogoname.gif" width="490" height="47" border="0" alt="">
+			<img name="topupperright" src="<?php print base_path() . path_to_theme() ?>/images/topupperright.gif" width="220" height="47" border="0" alt="">
+	
+			<div style="background:#fff url(<?php print base_path() . path_to_theme() ?>/images/topyear.gif) no-repeat left top;color:#fff;display:inline;float:left;font:bold 9px/9px Arial, sans-serif;height:18px;position:relative;width:29px"><span style="left:8px;position:absolute;top:2px;"><?php print date("y") ?></span></div>
+   
+			<a href="/home"><img name="topbtnhome" src="<?php print base_path() . path_to_theme() ?>/images/topbtnhome.gif" width="64" height="18" border="0" alt=""></a>
+			<a href="/studio"><img name="topbtnstudio" src="<?php print base_path() . path_to_theme() ?>/images/topbtnstudio.gif" width="66" height="18" border="0" alt=""></a>
+			<a href="/projects"><img name="topbtnproj" src="<?php print base_path() . path_to_theme() ?>/images/topbtnproj.gif" width="75" height="18" border="0" alt=""></a>
+			<a href="/press"><img name="topbtnpress" src="<?php print base_path() . path_to_theme() ?>/images/topbtnpress.gif" width="61" height="18" border="0" alt=""></a>
+			<a href="/scrapbook"><img name="topbtnbook" src="<?php print base_path() . path_to_theme() ?>/images/topbtnbook.gif" width="89" height="18" border="0" alt=""></a>
+			<a href="/helping_hand"><img name="topbtnhelp" src="<?php print base_path() . path_to_theme() ?>/images/topbtnhelp.gif" width="106" height="18" border="0" alt=""></a>
+			<img name="toplowerright" src="<?php print base_path() . path_to_theme() ?>/images/toplowerright.gif" width="220" height="18" border="0" alt="">	
+		</div>
+      </div> <!-- /header -->
+
+      <div id="main">
+		<div class="padding clearfix">
+		  <!-- <?php if ($breadcrumb): print $breadcrumb; endif; ?> -->
+          <?php if ($mission): print '<div id="mission">'. $mission .'</div>'; endif; ?>
+
+          <!-- <?php if ($tabs): print '<div id="tabs-wrapper" class="clear-block">'; endif; ?> -->
+          <?php if (($title) && (arg(1) !== '42')): print '<h2'. ($tabs ? ' class="with-tabs"' : '') .'>'. $title .'</h2>'; endif; ?>
+          <!-- <?php if ($tabs): print $tabs .'</div>'; endif; ?> -->
+
+          <?php if (isset($tabs2)): print $tabs2; endif; ?>
+
+          <?php if ($help): print $help; endif; ?>
+          <?php if ($messages): print $messages; endif; ?>
+          <?php print $content ?>
+          <span class="clear"></span>
+          <?php print $feed_icons ?>
+        </div>
+      </div>
+
+      <div id="footer">
+	  <?php
+	    print $footer_message;
+	    print $closure;
+	
+	  	$node = node_load(18);
+	    print $node->body;
+	  ?>
+      </div>
+
+    </div> <!-- /container -->
+  </div>
+<?php if ($sidebar_left): ?>
+  <div id="sidebar-left" class="sidebar">
+    <?php if ($search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
+    <?php print $sidebar_left ?>
+  </div>
+<?php endif; ?>
+
+<?php if ($sidebar_right): ?>
+  <div id="sidebar-right" class="sidebar">
+    <?php if (!$sidebar_left && $search_box): ?><div class="block block-theme"><?php print $search_box ?></div><?php endif; ?>
+    <?php print $sidebar_right ?>
+  </div>
+<?php endif; ?>
+<!-- /layout -->
+
+  </body>
+</html>

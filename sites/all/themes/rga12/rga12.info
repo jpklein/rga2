@@ -1,0 +1,8 @@
+name = RGA
+description = Drupal 7 update to the original rga theme.
+package = Core
+version = alpha
+core = 7.x
+regions[content] = Content
+regions[footer] = Footer
+stylesheets[all][] = css/style.css

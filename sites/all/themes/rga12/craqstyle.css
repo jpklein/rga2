@@ -1,0 +1,91 @@
+body {
+	margin: 0; border: 0; padding: 0;
+	font: normal 9px/12px Verdana, Arial, sans-serif;
+}
+ul, li {
+	margin:0;border:0;padding:0;
+	list-style:none;
+}
+h2 {
+	margin:0;border:0;padding:0;
+}
+p {
+	margin: 6px 0;
+}
+a {
+	color: #222;
+}
+a:hover {
+    color: #C67300;
+}
+a img {
+	border: none;
+}
+.view {
+	width: 600px; 
+    height: 600px;
+    overflow: auto;
+}
+
+
+.view-press-item {
+	background-color: #ded6a5;
+}
+.view-item-press-item {
+	color: #111;
+}
+.view-data-node-data-field-press-image-field-press-image-fid {
+	padding: 9px 12px 0;
+	background-color: #fff;
+}
+.view-data-node-title {
+	padding:7px 15px 3px 22px;
+	color:#333;
+	font: bold 11px/20px Arial, sans-serif;
+	background-color:#fff;
+}
+.view-data-node-body {
+	padding: 8px 16px 10px;
+}
+
+
+.view-project-item {
+	color: #333;
+	background-color: #000;
+}
+.view-content-project-item .content {
+
+}
+.view-content-project-item .section {
+	width:500px; position:relative; float:left;
+	text-align:center;
+}
+.view-content-project-item .section img {
+	margin:3px auto;
+}
+.view-content-project-item .description {
+	width:450px; margin:0 auto; background: #ded6a5;
+}
+.view-content-project-item .copy {
+	padding:5px; text-align:left;
+}
+.view-content-project-item h2 {
+	display:inline; color: #111; font: bold 9px/12px Verdana, Arial, sans-serif;
+}
+.view-content-project-item .location {
+	font-style: italic;
+}
+.field-field-project-image {
+	width:46px; position:relative; float:left;
+}
+.field-field-project-image ul {
+	padding-top:15px;
+	background:url(/images/btnviewmore.gif) no-repeat top left;
+}
+.field-field-project-image ul li {
+	text-align:center;
+}
+.field-field-project-image a img {
+	width: 40px; height: 40px;
+	margin: 3px;
+}

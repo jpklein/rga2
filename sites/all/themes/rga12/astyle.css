@@ -1,0 +1,771 @@
+body {
+ margin:  0px 0px 0px 0px;
+ padding: 0px 0px 25px 25px;
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ color: #2F1F0E;
+ background-color: #C7C2BE;
+}
+
+
+/*--- Default Font ---*/
+.default {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 11px;
+ font-weight: normal;
+ color: #2F1F0E;
+}
+
+
+/*  
+    Hyperlinks that appears in the member navbar:
+    login, register, calendar, etc.
+*/
+.loginText, .loginText a:link, .loginText a:active, .loginText a:visited, .loginText a:hover{ 
+ color:       #ffffff;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   9px; 
+ font-weight: normal;
+}
+.loginText a:link    { color:  #ffffff; }
+.loginText a:visited { color:  #ffffff; }
+.loginText a:active  { color:  #ffffff; }
+.loginText a:hover   { color:  #C7C2BE; } 
+
+
+
+
+/*--- Default table font ---*/
+td {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #2F1F0E;
+}
+
+/*--- Medium Font ---*/
+.mediumText {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 12px;
+ font-weight: normal;
+ color: #2F1F0E;
+}
+
+/*--- Comment Font ---*/
+.comment {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 9px;
+ font-weight: normal;
+ color: #9E938B;
+}
+  .comment a:link    { color:  #9E938B; text-decoration: underline; font-weight: normal;}
+  .comment a:visited { color:  #9E938B; text-decoration: underline; font-weight: normal;}
+  .comment a:active  { color:  #9E938B; text-decoration: underline; font-weight: normal;}
+  .comment a:hover   { color:  #9E938B; text-decoration: none; font-weight: normal;}
+  
+/*--- nextback Font ---*/
+.nextback {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #9E938B;
+}
+  .nextback a:link    { color:  #FF0000; font-weight: bold;}
+  .nextback a:visited { color:  #FF0000; font-weight: bold;}
+  .nextback a:active  { color:  #FF0000; font-weight: bold;}
+  .nextback a:hover   { color:  #9E938B; font-weight: bold;}
+  
+.light_link, .light_link a:link, .light_link a:active, .light_link a:visited, .light_link a:hover{ 
+ color:       #9E938B;
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:   10px; 
+ font-weight: bold;
+} 
+.light_link a:link    { color:  #9E938B; text-decoration: none;}
+.light_link a:visited { color:  #9E938B; text-decoration: none;}
+.light_link a:active  { color:  #9E938B; text-decoration: none;}
+.light_link a:hover   { color:  #FF0000; text-decoration: none;}  
+
+
+/*--- Coppermind Credits ---*/
+.footer, .footer a:link, .footer a:active, .footer a:visited, .footer a:hover{ 
+   color:           #F3F2F1;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       9px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+   text-align: left;
+} 
+  .footer a:link    { color:  #F3F2F1;}
+  .footer a:visited { color:  #F3F2F1;}
+  .footer a:active  { color:  #F3F2F1;}
+  .footer a:hover   { color:  #F3F2F1;}
+  
+
+/*--- Link to Gallery From Features ---*/
+.gallery_link, .gallery_link a:link, .gallery_link a:active, .gallery_link a:visited, .gallery_link a:hover{ 
+ color:       #ffffff;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   10px; 
+ font-weight: bold;
+}
+.gallery_link a:link    { color:  #ffffff; background-color: #FF0000;  padding:3px 3px 3px 3px; }
+.gallery_link a:visited { color:  #ffffff; background-color: #FF0000;  padding:3px 3px 3px 3px; }
+.gallery_link a:active  { color:  #ffffff; background-color: #FF0000;  padding:3px 3px 3px 3px; }
+.gallery_link a:hover   { color:  #2F1F0E; background-color: #EDEBEA;  padding:3px 3px 3px 3px; }
+
+
+
+/*--- Login Nav Font ---*/
+.log {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 9px;
+ font-weight: normal;
+ color: #fff;
+}
+
+
+/*--- Forum Posts ---*/
+.post {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #2F1F0E;
+ line-height: 16px;
+}
+.post a:link    { color:  #FF0000; font-weight: normal; }
+.post a:visited { color:  #FF0000; font-weight: normal; }
+.post a:active  { color:  #FF0000; font-weight: normal; }
+.post a:hover   { color:  #2F1F0E; font-weight: normal; }
+
+/*--- Comments ---*/
+.comments {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #9E938B;
+ line-height: 16px;
+}
+.comments a:link    { color:  #9E938B; font-weight: normal; text-decoration: underline; }
+.comments a:visited { color:  #9E938B; font-weight: normal; text-decoration: underline; }
+.comments a:active  { color:  #9E938B; font-weight: normal; text-decoration: underline; }
+.comments a:hover   { color:  #FF0000; font-weight: normal; text-decoration: underline; }
+
+
+
+/*--- Stats Font ---*/
+.stats {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 9px;
+ font-weight: normal;
+ color: #2F1F0E;
+}
+
+
+/*--- Date Font ---*/
+.date {
+ font-family:  Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #333;
+}
+
+.pmcodeBox {
+width: 500px;
+padding: 8px;
+border: 1px dotted #ccc;
+margin-left: auto;
+margin-right: auto;
+}
+
+
+.navBox {
+width: 260px;
+padding: 5px;
+border: 1px dotted #ccc;
+}
+
+.navBox2 {
+width: 400px;
+padding: 5px;
+border: 1px dotted #ccc;
+}
+
+.navBox3 {
+width: 600px;
+padding: 5px;
+border: 1px dotted #ccc;
+}
+
+
+
+
+.nav_links, .nav_links a:link, .nav_links a:active, .nav_links a:visited, .nav_links a:hover{ 
+   color:           #ffffff;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       12px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+   line-height: 18px;
+} 
+  .nav_links a:link    { color:  #ffffff; background-color:#2F1F0E; padding:0px 3px 0px 3px;}
+  .nav_links a:visited { color:  #ffffff; background-color:#2F1F0E; padding:0px 3px 0px 3px;}
+  .nav_links a:active  { color:  #ffffff; background-color:#2F1F0E; padding:0px 3px 0px 3px;}
+  .nav_links a:hover   { color:  #2F1F0E; background-color:#C7C2BE; padding:0px 3px 0px 3px;}
+  
+.cpg_admin_links, .cpg_admin_links a:link, .cpg_admin_links a:active, .cpg_admin_links a:visited, .cpg_admin_links a:hover{ 
+   color:           #2F1F0E;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       10px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+   line-height: 16px;
+} 
+  .cpg_admin_links a:link    { color:  #2F1F0E; background-color:#C7C2BE; padding:0px 3px 0px 3px;}
+  .cpg_admin_links a:visited { color:  #2F1F0E; background-color:#C7C2BE; padding:0px 3px 0px 3px;}
+  .cpg_admin_links a:active  { color:  #2F1F0E; background-color:#C7C2BE; padding:0px 3px 0px 3px;}
+  .cpg_admin_links a:hover   { color:  #ffffff; background-color:#2F1F0E; padding:0px 3px 0px 3px;}
+  
+
+.current_feature, .current_feature a:link, .current_feature a:active, .current_feature a:visited, .current_feature a:hover{ 
+   color:           #2F1F0E;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       12px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+} 
+  .current_feature a:link    { color:  #2F1F0E; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .current_feature a:visited { color:  #2F1F0E; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .current_feature a:active  { color:  #2F1F0E; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .current_feature a:hover   { color:  #2F1F0E; background-color:#FFFFFF; padding:0px 3px 0px 3px;} 
+  
+  
+.create_topic, .create_topic a:link, .create_topic a:active, .create_topic a:visited, .create_topic a:hover{ 
+   color:           #2F1F0E;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       10px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+} 
+  .create_topic a:link    { color:  #2F1F0E; background-color:#F3F2F1; padding:0px 3px 0px 3px;}
+  .create_topic a:visited { color:  #2F1F0E; background-color:#F3F2F1; padding:0px 3px 0px 3px;}
+  .create_topic a:active  { color:  #2F1F0E; background-color:#F3F2F1; padding:0px 3px 0px 3px;}
+  .create_topic a:hover   { color:  #FFFFFF; background-color:#2F1F0E; padding:0px 3px 0px 3px;}
+  
+.return, .return a:link, .return a:active, .return a:visited, .return a:hover{ 
+   color:           #FFFFFF;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       10px; 
+   font-weight:     normal;
+   letter-spacing:  0px;
+} 
+  .return a:link    { color:  #FFFFFF; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .return a:visited { color:  #FFFFFF; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .return a:active  { color:  #FFFFFF; background-color:#FF0000; padding:0px 3px 0px 3px;}
+  .return a:hover   { color:  #FFFFFF; background-color:#2F1F0E; padding:0px 3px 0px 3px;}     
+  
+  
+.medWhite, .medWhite a:link, .medWhite a:active, .medWhite a:visited, .medWhite a:hover{ 
+   color:           #ffffff;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       11px; 
+   font-weight:     bold;
+   letter-spacing:  0px;
+} 
+  .medWhite a:link    { color:  #ffffff; }
+  .medWhite a:visited { color:  #ffffff; }
+  .medWhite a:active  { color:  #ffffff; }
+  .medWhite a:hover   { color:  #000; text-decoration: underline;  }
+  
+  
+.medText, .medText a:link, .medText a:active, .medText a:visited, .medText a:hover{ 
+   color:           #2F1F0E;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       10px; 
+   font-weight:     normal;
+} 
+  .medText a:link    { color:  #2F1F0E; font-weight:bold; }
+  .medText a:visited { color:  #2F1F0E; font-weight:bold; }
+  .medText a:active  { color:  #2F1F0E; font-weight:bold; }
+  .medText a:hover   { color:  #FF0000; font-weight:bold; }  
+  
+.medTextspecial, .medTextspecial a:link, .medTextspecial a:active, .medTextspecial a:visited, .medTextspecial a:hover{ 
+   color:           #D49224;
+   font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       10px; 
+   font-weight:     normal;
+} 
+  .medTextspecial a:link    { color:  #D49224; font-weight:bold; }
+  .medTextspecial a:visited { color:  #D49224; font-weight:bold; }
+  .medTextspecial a:active  { color:  #D49224; font-weight:bold; }
+  .medTextspecial a:hover   { color:  #FF0000; font-weight:bold; }   
+
+.black{
+   color:           #000;
+	font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+   font-size:       11px; 
+   font-weight:     bold;
+   letter-spacing:  0px;
+}
+
+
+a {
+ text-decoration: none;
+ font-weight: bold;
+ color:  #2F1F0E;
+}
+a:visited {
+ color:  #2F1F0E;
+}
+a:active {
+ color:  #C7C2BE;
+}
+a:hover {
+ color: #FF0000;
+}
+
+
+.smLinks, .smLinks a:link, .smLinks a:active, .smLinks a:visited, .smLinks a:hover{ 
+ color:       #666666;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   10px; 
+ font-weight: bold;
+} 
+.smLinks a:link    { color:  #333399; text-decoration: underline;}
+.smLinks a:visited { color:  #333399; text-decoration: underline;}
+.smLinks a:active  { color:  #333333; text-decoration: underline;}
+.smLinks a:hover   { color:  #000000; text-decoration: none;}
+
+.footer_links, .footer_links a:link, .footer_links a:active, .footer_links a:visited, .footer_links a:hover{ 
+ color:       #433526;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   9px; 
+ font-weight: normal;
+} 
+.footer_links a:link    { color:  #433526; }
+.footer_links a:visited { color:  #433526; }
+.footer_links a:active  { color:  #433526; }
+.footer_links a:hover   { color:  #ffffff; background-color: #433526; }
+
+.views-quotes, .views-quotes a:link, .views-quotes a:active, .views-quotes a:visited, .views-quotes a:hover{ 
+ color:       #433526;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   9px; 
+ font-weight: normal;
+} 
+.views-quotes a:link    { color:  #433526; font-weight: bold; }
+.views-quotes a:visited { color:  #433526; font-weight: bold; }
+.views-quotes a:active  { color:  #433526; font-weight: bold; }
+.views-quotes a:hover   { color:  #ffffff; background-color: #433526; font-weight: bold; }
+
+.footer_links_goto, .footer_links_goto a:link, .footer_links_goto a:active, .footer_links_goto a:visited, .footer_links_goto a:hover{ 
+ color:       #433526;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   9px; 
+ font-weight: bold;
+} 
+.footer_links_goto a:link    { color:  #433526; }
+.footer_links_goto a:visited { color:  #433526; }
+.footer_links_goto a:active  { color:  #433526; }
+.footer_links_goto a:hover   { color:  #FF0000; }
+
+
+.news_small, .news_small a:link, .news_small a:active, .news_small a:visited, .news_small a:hover{ 
+ color:       #433526;
+ font-family: verdana,trebuchet,sans-serif;
+ font-size:   9px; 
+ font-weight: normal;
+} 
+.news_small a:link    { color:  #FF0000; }
+.news_small a:visited { color:  #FF0000; }
+.news_small a:active  { color:  #FF0000; }
+.news_small a:hover   { color:  #ffffff; background-color: #433526; }
+
+.forumLinks, .forumLinks a:link, .forumLinks a:active, .forumLinks a:visited, .forumLinks a:hover{ 
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:   12px; 
+ font-weight: bold;
+ margin-bottom: 3px;
+} 
+.forumLinks a:link    { color:  #333399; text-decoration: none; }
+.forumLinks a:visited { color:  #333399;  text-decoration: none; }
+.forumLinks a:active  { color:  #333333; text-decoration: none; }
+.forumLinks a:hover   { color:  #000000; text-decoration: underline;}
+
+.white_10, .white_10 a:link, .white_10 a:active, .white_10 a:visited, .white_10 a:hover{ 
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:   10px; 
+ font-weight: normal;
+ color:  #ffffff;
+} 
+.white_10 a:link    { color:  #ffffff; text-decoration: underline; }
+.white_10 a:visited { color:  #ffffff;  text-decoration: underline; }
+.white_10 a:active  { color:  #ffffff; text-decoration: none; }
+.white_10 a:hover   { color:  #EDEBEA; text-decoration: underline;}
+
+
+/*--- Main content container ---*/
+#content {
+ position: absolute;
+ top: 20px;
+ right: 15px;
+ margin-right: -15px; 
+ width: 100%;
+ background: #C7C2BE;
+}
+
+
+.forumBox {
+ border: 1px solid #999;
+}
+
+/*--- Bottom spacer ---*/
+.botSpacer {
+ border-bottom: 1px dotted #999;
+ margin-top: -1px;
+ margin-bottom: 3px;
+}
+
+
+/*--- White text used in top of forum ---*/
+.heading {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 24px;
+ color: #FF0000;
+ font-weight: normal;
+}
+
+/*--- White text used in top of forum ---*/
+.heading_small {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 12px;
+ color: #FF0000;
+ font-weight: bold;
+}
+
+/*--- Small dark heading ---*/
+.heading_small_dark {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 12px;
+ color: #2F1F0E;
+ font-weight: bold;
+}
+
+
+/*--- White text used in top of forum ---*/
+h3 {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 12px;
+ color: #000;
+ font-weight: bold;
+}
+
+
+/*--- Large text on main page ---*/
+.subHead{
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: bold;
+ color: #000;
+ margin-top: 4px;
+}
+
+/*--- Large text on main page ---*/
+.light{
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 10px;
+ font-weight: normal;
+ color: #C7C2BE;
+}
+
+/*--- Small light text ---*/
+.light_small{
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 9px;
+ font-weight: normal;
+ color: #C7C2BE;
+}
+
+
+/*--- General text ---*/
+p {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 11px;
+ color: #000;
+ margin-top: 3px;
+ margin-left: 22px;
+}
+
+/*--- Pre-formatted text ---*/
+pre {
+ font-family: Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size: 11px;
+ color: #003399;
+ margin-left: 12px;
+ margin-top: 2px;
+ margin-bottom: 2px;
+}
+
+
+
+.input {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+ color:				#2F1F0E;
+ width: 125px;
+ 
+}
+
+.input:focus {
+ background-color : #F3F2F1;
+}
+
+
+.input_218 {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+ width: 145px;
+ 
+}
+
+.input_218:focus {
+ background-color : #F3F2F1;
+}
+
+.create_topic-input {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E;
+ background-color : #F3F2F1;
+ width : 400px;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+ 
+}
+
+.create_topic-input:focus {
+ background-color : #ffffff;
+}
+
+
+.textarea {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E; 
+ width : 416px;
+ height : 120px;
+ background-color : #F3F2F1;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+}
+.textarea:focus {
+ background-color : #ffffff;
+}
+
+.textarea_tall {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E; 
+ width : 416px;
+ height : 240px;
+ background-color : #F3F2F1;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+}
+.textarea_tall:focus {
+ background-color : #ffffff;
+}
+
+.textarea_218 {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E; 
+ width : 145px;
+ height : 100px;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+}
+.textarea_218:focus {
+ background-color : #F3F2F1;
+}
+
+.textarea_news {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E; 
+ width : 286px;
+ height : 100px;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+}
+.textarea_news:focus {
+ background-color : #F3F2F1;
+}
+
+
+.create_topic-textarea {
+ font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+ font-size:			10px;
+ color:				#2F1F0E; 
+ width : 400px;
+ height : 120px;
+ background-color : #F3F2F1;
+ border-left: 1px solid #2F1F0E;
+ border-top: 1px solid #2F1F0E;
+ border-right: 1px solid #F3F2F1;
+ border-bottom: 1px solid #F3F2F1;
+}
+.create_topic-textarea:focus {
+ background-color : #ffffff;
+}
+
+/*--  Pull-down menus. --*/
+
+.pulldown {
+  background-color:   #F3F2F1;
+  font-family:        Verdana, Geneva, Trebuchet MS, Arial, Sans-serif;
+  font-size:          10px;
+  font-weight:        normal;
+  color:              #2F1F0E;
+  width : 145px;
+}
+
+.pulldown_cal {
+  background-color:   #F3F2F1;
+  font-family:        Verdana, Geneva, Trebuchet MS, Arial, Sans-serif;
+  font-size:          9px;
+  font-weight:        normal;
+  color:              #2F1F0E;
+  width : 100px;
+}
+
+
+/*----  "Submit button ----*/
+.button   {
+	font-family:		Verdana, Geneva, Helvetica, Trebuchet MS, Sans-serif;
+    font-size:			10px;
+    font-weight:		normal;
+    color:				#333;   
+}
+
+.red {
+color: #FF0000;
+font-weight: bold;
+}
+
+.gallery_thumbnail
+{
+float: left; 
+width: 188px; 
+border: 0px solid #999; 
+margin: 0px 20px 20px 0px; 
+padding: 5px; 
+background-color: #2F1F0E;
+}
+
+.crew_thumbnail
+{
+float: left; 
+width: 80px; 
+margin: 0px 7px 7px 0px; 
+padding: 0px;
+}
+
+.clearboth { clear: both; } 
+
+/*  Days of the month text and links */
+.calday, .calday a:link, .calday a:active, .calday a:visited, .calday a:hover, 
+
+.calday {
+font-size:   9px;
+color: #433526;
+width:20px;
+height:20px;
+background-color:#EDEBEA;
+font-family: Verdana, Geneva, Arial;
+text-decoration: none;
+vertical-align : middle;
+display:block;
+text-align : center;
+z-index:1;
+line-height: 20px;
+}
+
+.calday a:link    { 
+font-size:   9px;
+color: #433526;
+width:20px;
+height:20px;
+background-color:#C7C2BE;
+font-family: Verdana, Geneva, Arial;
+text-decoration: none;
+vertical-align : middle;
+display:block;
+text-align : center;
+z-index:1;
+line-height: 20px;
+}
+
+.calday a:active  { 
+font-size:   9px;
+color: #433526;
+width:20px;
+height:20px;
+background-color:#C7C2BE;
+font-family: Verdana, Geneva, Arial;
+text-decoration: none;
+vertical-align : middle;
+display:block;
+text-align : center;
+z-index:1;
+line-height: 20px;
+}
+
+.calday a:visited { 
+font-size:   9px;
+color: #433526;
+width:20px;
+height:20px;
+background-color:#C7C2BE;
+font-family: Verdana, Geneva, Arial;
+text-decoration: none;
+vertical-align : middle;
+display:block;
+text-align : center;
+z-index:1;
+line-height: 20px;
+}
+
+.calday a:hover {
+font-size:   9px;
+color: #ffffff;
+width:20px;
+height:20px;
+background-color:#FF0000;
+font-family: Verdana, Geneva, Arial;
+text-decoration: none;
+vertical-align : top;
+display:block;
+text-align : center;
+z-index:1;
+line-height: 20px;
+}

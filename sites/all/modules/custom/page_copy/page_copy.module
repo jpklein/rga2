@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * Code for the Page Copy feature.
+ */
+
+include_once('page_copy.features.inc');
+
+/**
+ * Implements hook_form_NODE_ID_alter().
+ */
+function page_copy_form_page_copy_node_form_alter(&$form, &$form_state, $form_id) {
+  // Remove lables for Title and Body fields
+  $form['title']['#title_display'] = 'none';
+  $form['body']['und'][0]['#title_display'] = 'none';
+  // Remove vertical tabs and text-format display
+  $form['#after_build'][] = '_page_copy_form_after_build';
+  $form['body']['#after_build'][] = '_page_copy_body_after_build';
+  // Remove Delete button
+  $form['actions']['submit']['#value'] = 'Save Changes';
+  $form['actions']['delete']['#access'] = FALSE;  
+}
+
+/**
+ * After-build handler for node-edit form.
+ */
+function _page_copy_form_after_build($form) {
+  // Remove vertical tabs from the form
+  $form['revision_information']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+  $form['options']['#access'] = FALSE;
+  $form['path']['#access'] = FALSE;
+  return $form;
+}
+
+/**
+ * After-build handler for node-edit form's Body field.
+ */
+function _page_copy_body_after_build($form) {
+  // Hide display of text-formatting information under body field
+  $form['und'][0]['format']['guidelines']['#access'] = FALSE;
+  $form['und'][0]['format']['help']['#access'] = FALSE;
+  $form['und'][0]['format']['#attributes']['class'] = array('element-hidden');
+  return $form;
+}

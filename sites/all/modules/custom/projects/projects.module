@@ -1,0 +1,88 @@
+<?php
+/**
+ * @file
+ * Code for the Projects feature.
+ */
+
+include_once('projects.features.inc');
+
+/**
+ * Implementation of hook_menu().
+ *
+ * Enable Project nodes to be viewed in a jQuery UI modal Dialog.
+ */ 
+function projects_menu() {
+  return array(
+    'projects/%/%dialog_js' => array(
+      'access arguments' => array('access content'),
+      'page callback' => 'projects_ajax_callback',
+      'page arguments' => array(1, 2),
+      'type' => MENU_CALLBACK,
+    ),
+  );
+}
+
+function projects_ajax_callback($url_alias, $js) {
+  if ($path = drupal_lookup_path('source', 'projects/'. $url_alias)) {
+    $nid = str_replace('node/', '', $path);
+    $nodes = entity_load('node', array($nid));
+  }
+  if (empty($nodes)) {
+    drupal_deliver_page(MENU_NOT_FOUND);
+  }
+  elseif ($js) {
+    // Populate $node->content with a render() array.
+    $node = reset($nodes);
+    $view_mode = 'full';
+    $lang_code = $GLOBALS['language_content']->language;
+    node_build_content($node, $view_mode, $lang_code);
+    // Add the required Dialog JavaScript and CSS.
+    $node->content['#attached']['library'] = array(
+      array('dialog', 'dialog'),
+    );
+    $commands = array();
+    $commands[] = dialog_command_display($node->content, array(
+      // Options that are passed to the jQuery UI dialog. 
+      // See http://jqueryui.com/demos/dialog/
+      // 'title' => $node->title,
+      'position' => 'top',
+      'height' => 'auto',
+      'width' => 'auto',
+      'resizable' => FALSE,
+      'dragable' => FALSE,
+    ));
+    ajax_deliver(array('#type' => 'ajax', '#commands' => $commands));
+  }
+  else {
+    $node = reset($nodes);
+    return node_page_view($node);
+  }
+}
+
+/**
+ * Implementation of hook_library_alter().
+ *
+ * Override default style of jQuery UI Dialog elements.
+ */
+function projects_library_alter(&$libraries, $module) {
+  if ($module == 'system' && isset($libraries['ui.dialog'])) {
+    if (isset($libraries['ui']['css']['misc/ui/jquery.ui.theme.css'])) {
+      unset($libraries['ui']['css']['misc/ui/jquery.ui.theme.css']);
+      $new_path = drupal_get_path('module', 'projects') . '/css/jquery.ui.theme.css';
+      $libraries['ui']['css'][$new_path] = array();
+    }
+    $libraries['ui.dialog']['css'] = array(
+      drupal_get_path('module', 'projects') . '/css/jquery.ui.dialog.css' => array(),
+    );
+  }
+}
+
+/**
+ * Implementation of hook_galleryformatter_styles().
+ *
+ * Provides a custom css-style setting for the Gallery Formatter module.
+ */
+function projects_galleryformatter_styles() {
+  $file_uri = drupal_get_path('module', 'projects') . '/css/projectgallery.css';
+  return array(file_stream_wrapper_uri_normalize($file_uri) => 'Projectgallery');
+}

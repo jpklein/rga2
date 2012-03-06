@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Scrapbook Item feature.
+ */
+
+include_once('scrapbook_item.features.inc');

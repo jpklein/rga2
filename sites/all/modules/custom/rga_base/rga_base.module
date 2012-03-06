@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RGA Base feature.
+ */
+
+include_once('rga_base.features.inc');

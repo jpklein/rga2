@@ -1,0 +1,146 @@
+/* General styling */
+body {
+  background-color: #EFE7C6;
+  font: 11px/13px Verdana, Arial, sans-serif;
+}
+a { text-decoration: none; }
+
+/* Section layout */
+#page-wrapper {
+  left: 50%;
+  margin-left: -428px;
+  position: absolute;
+}
+/*.sidebar {
+  left: 50%;
+  margin-left: 380px;
+  position: absolute;
+}*/
+#page {
+  padding: 18px 0 0 68px;
+  position: absolute;
+  SCROLLBAR-FACE-COLOR: #e3e2dc;
+  SCROLLBAR-HIGHLIGHT-COLOR: #eae9e5;
+  SCROLLBAR-SHADOW-COLOR: #aaa9a5;
+  SCROLLBAR-3DLIGHT-COLOR: #f1f1ee;
+  SCROLLBAR-ARROW-COLOR: #000000;
+  SCROLLBAR-TRACK-COLOR: #e9e8e3;
+  SCROLLBAR-DARKSHADOW-COLOR: #71716e;
+}
+.section { width: 700px; }
+.panel-2col .panel-col-top,
+.panel-2col .panel-col-bottom {
+  clear: both;
+  width: 99.9%;
+}
+.panel-2col .panel-col-first {
+  float: left;
+  width: 30px;
+}
+.panel-2col .panel-col-last {
+  background: transparent url(../img/homemain.gif) no-repeat top left;
+  float: right;
+  position: relative;
+  width: 400px; height: 450px;
+}
+
+/* Main Menu */
+.pane-system-main-menu {
+  position: absolute;
+  top: 35px; left: 0;
+  width: 99.9%;
+}
+.pane-system-main-menu .contextual-links-wrapper {
+  position: absolute;
+  top: -1.2em; right: 0;
+}
+.pane-system-main-menu .pane-content a {
+  display: block;
+  float: left; 
+  height: 30px;
+  font-size: 0;
+}
+.pane-system-main-menu .home {
+  display: none;
+}
+.pane-system-main-menu .studio a {
+  width: 75px;
+  background: transparent url(../img/homebtnstudio.gif) no-repeat top left;
+}
+.pane-system-main-menu .projects a {
+  width: 68px;
+  background: transparent url(../img/homebtnprojects.gif) no-repeat top left;
+}
+.pane-system-main-menu .press a {
+  width: 60px;
+  background: transparent url(../img/homebtnpress.gif) no-repeat top left;
+}
+.pane-system-main-menu .scrapbook a {
+  width: 84px;
+  background: transparent url(../img/homebtnscrapbook.gif) no-repeat top left;
+}
+.pane-system-main-menu .helpinghand a {
+  width: 90px;
+  background: transparent url(../img/homebtnhelp.gif) no-repeat top left;
+}
+
+/* Welcome Message */
+#page-copy {
+  position: absolute;
+  top: 85px; left: 14px;
+  width: 286px;
+  font: 11px/13px Verdana, Arial, sans-serif;
+  color: #C67300;
+}
+#page-copy .pane-title { font: normal 14px/17px Arial, sans-serif; }
+#page-copy .pane-content p { margin: 11px 0; }
+
+/* Recent News/Projects */
+#featured-content {
+  position: absolute;
+  top: 328px; left: 0;
+  width: 286px;
+}
+#featured-content h2 {
+  display: block;
+  width: 99.9%; height: 22px;
+  font-size: 0;
+  background: transparent url(../img/homehdrnews.jpg) no-repeat top left;
+}
+#featured-content .content { padding: 5px 0 0 17px; }
+#featured-content .field-item {
+  display: list-item;
+  color: #666;
+  list-style: disc outside;
+  line-height: 17px;
+}
+#featured-content a {
+  padding: 1px 3px 1px 2px;
+  color: #EEE;
+  font: bold 10px Verdana, Arial, sans-serif;
+}
+#featured-content a:hover {
+  color: #222;
+  background-color: #969696;
+}
+
+/* Site Footer */
+#footer {
+  position: relative;
+  top: -6px;
+  text-align: center;
+}
+#footer .content {
+  color: #111;
+  margin: 0 auto;
+  font: normal 9px/9px Verdana, Arial, sans-serif;
+}
+#footer a {
+  color: #333;
+  font: 10px Verdana, Arial, sans-serif;
+  text-decoration: none;
+}
+#footer a:hover {
+  color: #000;
+  text-decoration: underline;
+}

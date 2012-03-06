@@ -1,0 +1,111 @@
+<?php
+/**
+ * @file
+ * Code for the Featured Content feature.
+ */
+
+include_once('featured_content.features.inc');
+
+/**
+ * Implements hook_form_NODE_ID_alter().
+ */
+function featured_content_form_featured_content_node_form_alter(&$form, &$form_state, $form_id) {
+  // Remove lables for Title and Body fields
+  $form['title']['#title_display'] = 'none';
+  $form['field_featuredproject1']['und']['#title_display'] = 'none';
+  $form['field_featuredproject2']['und']['#title_display'] = 'none';
+  $form['field_featuredproject3']['und']['#title_display'] = 'none';
+  // Remove vertical tabs and text-format display
+  $form['#after_build'][] = '_featured_content_form_after_build';
+  // Remove Delete button
+  $form['actions']['submit']['#value'] = 'Save Changes';
+  $form['actions']['delete']['#access'] = FALSE;  
+}
+
+/**
+ * After-build handler for node-edit form.
+ */
+function _featured_content_form_after_build($form) {
+  // Remove vertical tabs from the form
+  $form['revision_information']['#access'] = FALSE;
+  $form['author']['#access'] = FALSE;
+  $form['options']['#access'] = FALSE;
+  $form['path']['#access'] = FALSE;
+  return $form;
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * Adds a custom formatter to configure node_reference fields for display. We do
+ * this to alter the link markup so that ajax.js & Dialog API display the linked
+ * node in a modal dialog on click.
+ */
+function featured_content_field_formatter_info() {
+  return array(
+    'node_reference_dialog' => array(
+      'label' => t('Title (modal dialog link)'),
+      'description' => t('Display the title of the referenced node as a link to display it in a modal dialog.'),
+      'field types' => array('node_reference'),
+    )
+  );
+}
+
+/**
+ * Implements hook_field_formatter_prepare_view().
+ *
+ * Copy of node_reference.module.. Wish there was another way to hook into this.
+ */
+function featured_content_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
+  $ids = array();
+  foreach ($displays as $id => $display) {
+    if ($display['type'] != 'node_reference_nid') {
+      foreach ($items[$id] as $delta => $item) {
+        if ($item['access']) {
+          $ids[$item['nid']] = $item['nid'];
+        }
+      }
+    }
+  }
+  $entities = node_load_multiple($ids);
+  foreach ($displays as $id => $display) {
+    if ($display['type'] != 'node_reference_nid') {
+      foreach ($items[$id] as $delta => $item) {
+        if ($item['access']) {
+          $items[$id][$delta]['node'] = $entities[$item['nid']];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ *
+ * Where the rubber hits the road. We add the 'nojs' marker to the end of #href
+ * and add css classes to tell ajax.js & Dialog API to process the link element.
+ */
+function featured_content_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $result = array();
+  foreach ($items as $delta => $item) {
+    if ($item['access']) {
+      $node = $item['node'];
+      $label = entity_label('node', $node);
+      $uri = entity_uri('node', $node);
+      $result[$delta] = array(
+        '#type' => 'link',
+        '#title' => $label,
+        '#href' => drupal_lookup_path('alias', $uri['path']) . '/nojs',
+        '#options' => $uri['options'],
+      );
+      $result[$delta]['#options']['attributes']['class'] = array(
+        'use-ajax', 'use-dialog'
+      );
+      if (!$node->status) {
+        $result[$delta]['#prefix'] = '<span class="node-unpublished">';
+        $result[$delta]['#suffix'] = '</span>';
+      }
+    }
+  }
+  return $result;
+}
