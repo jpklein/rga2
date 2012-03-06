@@ -22,6 +22,7 @@ function empty_page_install() {
  * Implements hook_uninstall().
  */
 function empty_page_uninstall() {
+  module_load_include('module', 'empty_page');
   empty_page_clear_menu_cache();
 }
 
