@@ -18,7 +18,9 @@ function page_copy_form_page_copy_node_form_alter(&$form, &$form_state, $form_id
   $form['body']['#after_build'][] = '_page_copy_body_after_build';
   // Remove Delete button
   $form['actions']['submit']['#value'] = 'Save Changes';
-  $form['actions']['delete']['#access'] = FALSE;  
+  $form['actions']['delete']['#access'] = FALSE;
+  // Ensure node is published on form save
+  $form['#validate'][] = '_page_copy_form_validate';
 }
 
 /**
@@ -42,4 +44,13 @@ function _page_copy_body_after_build($form) {
   $form['und'][0]['format']['help']['#access'] = FALSE;
   $form['und'][0]['format']['#attributes']['class'] = array('element-hidden');
   return $form;
+}
+
+/**
+ * Validation handler for node-edit form.
+ */
+function _page_copy_form_validate($form, &$form_state) {
+  // We must explicitly set the publish bit when access to the node-options tab
+  // is denied, even if the content type is set to publish by default.
+  $form_state['values']['status'] = 1;
 }
