@@ -7,6 +7,33 @@
 include_once('featured_content.features.inc');
 
 /**
+ * Implements hook_block_info().
+ */
+function featured_content_block_info() {
+  $blocks = array();
+  $result = db_query('SELECT title, nid FROM {node} WHERE type = :type', array(':type' => 'featured_content'));
+  foreach ($result as $record) {
+    $blocks['featured_content_' . $record->nid] = array(
+      'info' => t('Featured Content: "@name" Form', array('@name' => $record->title)),
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function featured_content_block_view($delta = '') {
+    $block = array();
+    module_load_include('inc', 'node', 'node.pages');
+    $node = node_load(intval(str_replace('featured_content_', '', $delta)));
+    $block['subject'] = t('@title form', array('@title' => $node->title));
+    $block['content']['form'] = drupal_get_form($node->type . '_node_form', $node);
+    return $block;
+}
+
+/**
  * Implements hook_form_NODE_ID_alter().
  */
 function featured_content_form_featured_content_node_form_alter(&$form, &$form_state, $form_id) {
@@ -17,9 +44,13 @@ function featured_content_form_featured_content_node_form_alter(&$form, &$form_s
   $form['field_featuredproject3']['und']['#title_display'] = 'none';
   // Remove vertical tabs and text-format display
   $form['#after_build'][] = '_featured_content_form_after_build';
-  // Remove Delete button
+  // Keep user on same page after submit
   $form['actions']['submit']['#value'] = 'Save Changes';
-  $form['actions']['delete']['#access'] = FALSE;  
+  $form['actions']['submit']['#submit'][] = '_featured_content_node_form_submit';
+  // Remove Delete button
+  $form['actions']['delete']['#access'] = FALSE;
+  // Ensure node is published on form save
+  $form['#validate'][] = '_featured_content_form_validate';
 }
 
 /**
@@ -32,6 +63,23 @@ function _featured_content_form_after_build($form) {
   $form['options']['#access'] = FALSE;
   $form['path']['#access'] = FALSE;
   return $form;
+}
+
+/**
+ * Validation handler for node-edit form.
+ */
+function _featured_content_form_validate($form, &$form_state) {
+  // We must explicitly set the publish bit when access to the node-options tab
+  // is denied, even if the content type is set to publish by default.
+  $form_state['values']['status'] = 1;
+}
+
+/**
+ * Submit handler for node-edit form.
+ */
+function _featured_content_node_form_submit($form, &$form_state) {
+  // Keep user on the same page after form submission
+  $form_state['redirect'] = $_GET['q'];
 }
 
 /**

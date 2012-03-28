@@ -7,6 +7,53 @@
 include_once('page_copy.features.inc');
 
 /**
+ * Implements hook_block_info().
+ */
+function page_copy_block_info() {
+  $blocks = array();
+  $result = db_query('SELECT title, nid FROM {node} WHERE type = :type', array(':type' => 'page_copy'));
+  foreach ($result as $record) {
+    $blocks['page_copy_' . $record->nid] = array(
+      'info' => t('Page Copy: "@name" Form', array('@name' => $record->title)),
+      'cache' => DRUPAL_NO_CACHE,
+    );
+  }
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function page_copy_block_view($delta = '') {
+  $block = array();
+
+  module_load_include('inc', 'node', 'node.pages');
+  $node = node_load(intval(str_replace('page_copy_', '', $delta)));  
+
+  $block['subject'] = t('@title form', array('@title' => $node->title));
+  $block['content']['form'] = drupal_get_form($node->type . '_node_form', $node);
+  return $block;
+}
+
+/**
+ * Implements hook_forms().
+ *
+ * Since we may have pages with multiple forms of the same type on a single page,
+ * we have to tell the Form API where to find the processing function?
+ */
+// function page_copy_forms($form_id) {
+//   $args = func_get_args();
+//   $forms = array();
+//   if (preg_match('/^page_copy_node_form/', $form_id)) {
+//     $forms[$form_id] = array(
+//         'callback' => 'page_copy_node_form',
+//         'callback arguments' => array('page_copy_node_form'),
+//     );
+//   }
+//   return $forms;
+// }
+
+/**
  * Implements hook_form_NODE_ID_alter().
  */
 function page_copy_form_page_copy_node_form_alter(&$form, &$form_state, $form_id) {
@@ -16,8 +63,10 @@ function page_copy_form_page_copy_node_form_alter(&$form, &$form_state, $form_id
   // Remove vertical tabs and text-format display
   $form['#after_build'][] = '_page_copy_form_after_build';
   $form['body']['#after_build'][] = '_page_copy_body_after_build';
-  // Remove Delete button
+  // Keep user on same page after submit
   $form['actions']['submit']['#value'] = 'Save Changes';
+  $form['actions']['submit']['#submit'][] = '_page_copy_node_form_submit';
+  // Remove Delete button
   $form['actions']['delete']['#access'] = FALSE;
   // Ensure node is published on form save
   $form['#validate'][] = '_page_copy_form_validate';
@@ -53,4 +102,12 @@ function _page_copy_form_validate($form, &$form_state) {
   // We must explicitly set the publish bit when access to the node-options tab
   // is denied, even if the content type is set to publish by default.
   $form_state['values']['status'] = 1;
+}
+
+/**
+ * Submit handler for node-edit form.
+ */
+function _page_copy_node_form_submit($form, &$form_state) {
+  // Keep user on the same page after form submission
+  $form_state['redirect'] = $_GET['q'];
 }
