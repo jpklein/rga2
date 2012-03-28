@@ -33,18 +33,41 @@ function projects_ajax_callback($url_alias, $js) {
   elseif ($js) {
     // Populate $node->content with a render() array.
     $node = reset($nodes);
-    $view_mode = 'full';
+    $view_mode = 'default';
     $lang_code = $GLOBALS['language_content']->language;
     node_build_content($node, $view_mode, $lang_code);
-    // Add the required Dialog JavaScript and CSS.
-    $node->content['#attached']['library'] = array(
-      array('dialog', 'dialog'),
-    );
+
+    // Add markup for layout of description fields
+    // TODO:: why isn't the Display Suite layout getting called?
+    $last_field = array();
+    $node->content['title'][0]['#prefix'] = '<div class="gallery-description"><div class="project-information"><fieldset class="fieldset-wrapper">';
+    $last_field = &$node->content['title'][0];
+    if (!empty($node->content['field_location'][0]['#markup'])) {
+      $last_field = &$node->content['field_location'][0];
+    }
+    if (!empty($node->content['body'][0]['#markup'])) {
+      $last_field = &$node->content['body'][0];
+    }
+    $last_field['#suffix'] = isset($last_field['#suffix'])
+      ? $last_field['#suffix'] . '</fieldset></div></div>'
+      : '</fieldset></div></div>';
+
+    // Add just the required Dialog JavaScript and CSS.
+    drupal_static_reset('drupal_add_js');
+    drupal_static_reset('drupal_add_css');
+    $node->content['#attached']['library'] = array(array('dialog', 'dialog'));
+    $project_path = drupal_get_path('module', 'projects');
+    drupal_add_js($project_path . '/js/galleryformatter.js');
+    drupal_add_css(drupal_get_path('module', 'galleryformatter') . '/theme/galleryformatter.css');
+    drupal_add_css($project_path . '/css/projectgallery.css');
+
+// $node->content['seebug'] = array('#markup' => '<pre>'.print_r($node->content(),TRUE).'</pre>');
+
     $commands = array();
     $commands[] = dialog_command_display($node->content, array(
       // Options that are passed to the jQuery UI dialog. 
       // See http://jqueryui.com/demos/dialog/
-      // 'title' => $node->title,
+      'title' => $node->title,
       'position' => 'top',
       'height' => 'auto',
       'width' => 'auto',
@@ -74,6 +97,19 @@ function projects_library_alter(&$libraries, $module) {
     $libraries['ui.dialog']['css'] = array(
       drupal_get_path('module', 'projects') . '/css/jquery.ui.dialog.css' => array(),
     );
+  }
+}
+
+/**
+ * Implementation of hook_js_alter().
+ *
+ * Run altered version of galleryformatter.js
+ */
+function projects_js_alter(&$javascript) {
+  $old = drupal_get_path('module', 'galleryformatter') . '/theme/galleryformatter.js';
+  if (isset($javascript[$old])) {
+    $new = drupal_get_path('module', 'projects') . '/js/galleryformatter.js';
+    $javascript[$old]['data'] = $new;
   }
 }
 
