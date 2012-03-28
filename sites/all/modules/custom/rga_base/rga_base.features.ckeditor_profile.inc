@@ -20,7 +20,7 @@ function rga_base_ckeditor_profile_defaults() {
         'ss' => '2',
         'default' => 't',
         'show_toggle' => 't',
-        'skin' => 'v2',
+        'skin' => 'kama',
         'uicolor' => 'default',
         'uicolor_textarea' => '<p>
 	Click the <strong>UI Color Picker</strong> button to set your color preferences.</p>
@@ -68,6 +68,7 @@ function rga_base_ckeditor_profile_defaults() {
         'scayt_autoStartup' => 'f',
         'theme_config_js' => 'f',
         'js_conf' => '',
+        'form_instance' => '1',
         'loadPlugins' => array(),
       ),
       'input_formats' => array(
