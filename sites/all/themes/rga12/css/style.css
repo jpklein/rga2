@@ -1,108 +1,46 @@
+/* General Styling */
 body { background-color: #CEC6AD; }
-
 a:link { COLOR: #333333; }
 a:active { COLOR: #000000; }
 a:visited { COLOR: #666666; }
 a:hover { COLOR: #000000; }
 a { font-family: Verdana, Arial, Helvetica, sans-serif; text-decoration: none; }
-
 h2, h2 a { font: normal 18px/18px Arial,sans-serif; }
 h2, h2 a:link, h2 a:visited { margin: 0 0 8px 0; color: #E79431; }
 h2 a:hover { color: #000; }
 
-#page-wrapper {
-  left: 50%;
-  margin-left: -428px;
-  position: absolute;
-}
-#page {
-  font: 11px/12px Verdana, Arial, sans-serif;
-  padding-left: 68px;
-  SCROLLBAR-FACE-COLOR: #E3E2DC;
-  SCROLLBAR-HIGHLIGHT-COLOR: #EAE9E5;
-  SCROLLBAR-SHADOW-COLOR: #AAA9A5;
-  SCROLLBAR-3DLIGHT-COLOR: #F1F1EE;
-  SCROLLBAR-ARROW-COLOR: #000000;
-  SCROLLBAR-TRACK-COLOR: #E9E8E3;
-  SCROLLBAR-DARKSHADOW-COLOR: #71716E;
-}
-#header, #main {
-  background-color: #FFF;
-  width: 720px;
-}
+/* Page Layout */
+#page-wrapper { left: 50%; margin-left: -428px; position: absolute; }
+#page { font: 11px/12px Verdana, Arial, sans-serif; padding-left: 68px; SCROLLBAR-FACE-COLOR: #E3E2DC; SCROLLBAR-HIGHLIGHT-COLOR: #EAE9E5; SCROLLBAR-SHADOW-COLOR: #AAA9A5; SCROLLBAR-3DLIGHT-COLOR: #F1F1EE; SCROLLBAR-ARROW-COLOR: #000000; SCROLLBAR-TRACK-COLOR: #E9E8E3; SCROLLBAR-DARKSHADOW-COLOR: #71716E; }
+#header, #main { background-color: #FFF; width: 720px; }
 
+/* Site Header and Main Menu */
 #name-and-slogan, #navigation { margin-left: 10px; }
 #name-and-slogan { background: transparent url("../img/topupperright.gif") repeat-x scroll right top; }
-#site-name a {
-  display: block;
-  width: 205px; height: 47px;
-  background: transparent url("../img/toplogoname.gif") no-repeat scroll left top;
-}
+#site-name a { display: block; width: 205px; height: 47px; background: transparent url("../img/toplogoname.gif") no-repeat scroll left top; }
 #navigation { background: transparent url("../img/toplowerright.gif") repeat-x scroll right top; }
-#navigation .section {
-  padding-left: 29px;
-  color: #FFF;
-  font: bold 9px/18px Arial, sans-serif;
-  background: transparent url("../img/topyear.gif") no-repeat scroll left top;
-}
-#copyright-year {
-  float: left; margin-left: -21px;
-  position: relative; top: -2px;
-}
-#main-menu a {
-  display: block;
-  float: left;
-  height: 18px;
-  font-size: 0;
-}
-#main-menu .home a {
-  width: 64px;
-  background: transparent url(../img/topbtnhome.gif) no-repeat top left;
-}
-#main-menu .studio a {
-  width: 66px;
-  background: transparent url(../img/topbtnstudio.gif) no-repeat top left;
-}
-#main-menu .projects a {
-  width: 75px;
-  background: transparent url(../img/topbtnproj.gif) no-repeat top left;
-}
-#main-menu .press a {
-  width: 61px;
-  background: transparent url(../img/topbtnpress.gif) no-repeat top left;
-}
-#main-menu .scrapbook a {
-  width: 89px;
-  background: transparent url(../img/topbtnbook.gif) no-repeat top left;
-}
-#main-menu .helpinghand a {
-  width: 106px;
-  background: transparent url(../img/topbtnhelp.gif) no-repeat top left;
-}
-
-#content { padding: 42px 28px 28px 36px; }
+#navigation .section { padding-left: 29px; color: #FFF; font: bold 9px/18px Arial, sans-serif; background: transparent url("../img/topyear.gif") no-repeat scroll left top; }
+#copyright-year { float: left; margin-left: -21px; position: relative; top: -2px; }
+#main-menu a { display: block; float: left; height: 18px; font-size: 0; }
+#main-menu .home a { width: 64px; background: transparent url(../img/topbtnhome.gif) no-repeat top left; }
+#main-menu .studio a { width: 66px; background: transparent url(../img/topbtnstudio.gif) no-repeat top left; }
+#main-menu .projects a { width: 75px; background: transparent url(../img/topbtnproj.gif) no-repeat top left; }
+#main-menu .press a { width: 61px; background: transparent url(../img/topbtnpress.gif) no-repeat top left; }
+#main-menu .scrapbook a { width: 89px; background: transparent url(../img/topbtnbook.gif) no-repeat top left; }
+#main-menu .helpinghand a { width: 106px; background: transparent url(../img/topbtnhelp.gif) no-repeat top left; }
 
 /* Site Footer */
-#footer {
-  width: 720px; /* IE 6 freaks out unless this is set? */
-  margin: 6px 0;
-  clear: both;
-  text-align: center;
-}
-#footer .content {
-  color: #111;
-  margin: 0 auto;
-  font: normal 9px/9px Verdana, Arial, sans-serif;
-}
-#footer a {
-  color: #333;
-  font: 10px Verdana, Arial, sans-serif;
-  text-decoration: none;
-}
-#footer a:hover {
-  color: #000;
-  text-decoration: underline;
-}
+#footer { width: 720px; margin: 6px 0; clear: both; text-align: center; }
+#footer .content { color: #111; margin: 0 auto; font: normal 9px/9px Verdana, Arial, sans-serif; }
+#footer a { color: #333; font: 10px Verdana, Arial, sans-serif; text-decoration: none; }
+#footer a:hover { color: #000; text-decoration: underline; }
+
+/* Page Content */
+#content { padding: 42px 28px 28px 36px; }
+.node-type-project #content { border: solid 10px white; /*background-color: black;*/ }
+
+/* Projects */
+
 
 .item-list p {
   margin: 5px 0; border: 0; padding: 0;
