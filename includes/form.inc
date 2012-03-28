@@ -113,12 +113,20 @@
  * @see drupal_build_form()
  */
 function drupal_get_form($form_id) {
+  $instance_counter = &drupal_static(__FUNCTION__, array());
   $form_state = array();
 
   $args = func_get_args();
   // Remove $form_id from the arguments.
   array_shift($args);
   $form_state['build_info']['args'] = $args;
+
+  // It's possible for a page to contain multiple forms using the same $form_id.
+  // These need to be distinguished when the form is submitted.
+  if (!isset($instance_counter[$form_id])) {
+    $instance_counter[$form_id] = 0;
+  }
+  $form_state['build_info']['instance'] = (string) ++$instance_counter[$form_id];
 
   return drupal_build_form($form_id, $form_state);
 }
@@ -221,10 +229,6 @@ function drupal_get_form($form_id) {
  *     write data, as this could lead to security issues. It is useful so that
  *     searches do not need to have a form_id in their query arguments to
  *     trigger the search.
- *   - must_validate: Ordinarily, a form is only validated once, but there are
- *     times when a form is resubmitted internally and should be validated
- *     again. Setting this to TRUE will force that to happen. This is most
- *     likely to occur during Ajax operations.
  *   - programmed: If TRUE, the form was submitted programmatically, usually
  *     invoked via drupal_form_submit(). Defaults to FALSE.
  *   - process_input: Boolean flag. TRUE signifies correct form submission.
@@ -541,7 +545,6 @@ function form_state_keys_no_cache() {
   return array(
     // Public properties defined by form constructors and form handlers.
     'always_process',
-    'must_validate',
     'rebuild',
     'rebuild_info',
     'redirect',
@@ -689,7 +692,6 @@ function drupal_form_submit($form_id, &$form_state) {
   $form_state['submitted'] = TRUE;
 
   // Reset form validation.
-  $form_state['must_validate'] = TRUE;
   form_clear_error();
 
   drupal_prepare_form($form_id, $form, $form_state);
@@ -1002,6 +1004,13 @@ function drupal_prepare_form($form_id, &$form, &$form_state) {
       '#id' => drupal_html_id("edit-$form_id"),
     );
   }
+  if (isset($form_state['build_info']['instance'])) {
+    $form['form_instance'] = array(
+      '#type' => 'hidden',
+      '#value' => $form_state['build_info']['instance'],
+      '#id' => drupal_html_id('edit-' . $form_id . '-form-instance'),
+    );
+  }
   if (!isset($form['#id'])) {
     $form['#id'] = drupal_html_id($form_id);
   }
@@ -1086,12 +1095,6 @@ function drupal_prepare_form($form_id, &$form, &$form_state) {
  *   not be repeated in the submission step.
  */
 function drupal_validate_form($form_id, &$form, &$form_state) {
-  $validated_forms = &drupal_static(__FUNCTION__, array());
-
-  if (isset($validated_forms[$form_id]) && empty($form_state['must_validate'])) {
-    return;
-  }
-
   // If the session token was set by drupal_prepare_form(), ensure that it
   // matches the current user's session.
   if (isset($form['#token'])) {
@@ -1106,7 +1109,6 @@ function drupal_validate_form($form_id, &$form, &$form_state) {
   }
 
   _form_validate($form, $form_state, $form_id);
-  $validated_forms[$form_id] = TRUE;
 
   // If validation errors are limited then remove any non validated form values,
   // so that only values that passed validation are left for submit callbacks.
@@ -1739,9 +1741,14 @@ function form_builder($form_id, &$element, &$form_state) {
     $form_state['complete form'] = &$element;
 
     // Set a flag if we have a correct form submission. This is always TRUE for
-    // programmed forms coming from drupal_form_submit(), or if the form_id coming
-    // from the POST data is set and matches the current form_id.
-    if ($form_state['programmed'] || (!empty($form_state['input']) && (isset($form_state['input']['form_id']) && ($form_state['input']['form_id'] == $form_id)))) {
+    // programmed forms coming from drupal_form_submit(), or if the form_id and
+    // form_instance coming from the POST data indicate that it was this form
+    // that was submitted. This ensures that when processing a POST request for
+    // a page that contains multiple forms, that the Form API input processing
+    // logic only runs for the form that was submitted. We allow advanced
+    // use-cases to unset $form_state['build_info']['instance'] to bypass that
+    // part of the check.
+    if ($form_state['programmed'] || (!empty($form_state['input']) && (isset($form_state['input']['form_id']) && ($form_state['input']['form_id'] == $form_id)) && (!isset($form_state['build_info']['instance']) || $form_state['input']['form_instance'] == $form_state['build_info']['instance']))) {
       $form_state['process_input'] = TRUE;
     }
     else {
@@ -2110,7 +2117,7 @@ function _form_button_was_clicked($element, &$form_state) {
  */
 function form_state_values_clean(&$form_state) {
   // Remove internal Form API values.
-  unset($form_state['values']['form_id'], $form_state['values']['form_token'], $form_state['values']['form_build_id'], $form_state['values']['op']);
+  unset($form_state['values']['form_id'], $form_state['values']['form_token'], $form_state['values']['form_build_id'], $form_state['values']['form_instance'], $form_state['values']['op']);
 
   // Remove button values.
   // form_builder() collects all button elements in a form. We remove the button
@@ -4049,7 +4056,7 @@ function _form_set_class(&$element, $class = array()) {
   if (!empty($element['#required'])) {
     $element['#attributes']['class'][] = 'required';
   }
-  if (isset($element['#parents']) && form_get_error($element)) {
+  if (isset($element['#parents']) && !empty($element['#validated']) && form_get_error($element)) {
     $element['#attributes']['class'][] = 'error';
   }
 }
