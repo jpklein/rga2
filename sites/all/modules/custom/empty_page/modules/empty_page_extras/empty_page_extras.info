@@ -1,0 +1,7 @@
+name = "Empty Page Extras"
+description = 'Adds functionality to the "Empty Page" module.'
+core = 7.x
+package = "Other"
+dependencies[] = empty_page
+configure = admin/structure/empty-page/settings
+

@@ -1,0 +1,93 @@
+<?php
+
+/**
+ *
+ * @file
+ * Installation file.
+ *
+ */
+
+/**
+ * Implements hook_install().
+ */
+function empty_page_install() {
+  // When menu items are being retrieved, Empty Page's hook_menu needs to come last so that path overrides work.
+  db_update('system')
+    ->fields(array('weight' => 1000))
+    ->condition('name', 'empty_page')
+    ->execute();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function empty_page_uninstall() {
+  module_load_include('module', 'empty_page');
+  empty_page_clear_menu_cache();
+}
+
+/**
+ * Implements hook_schema().
+ */
+function empty_page_schema() {
+  $schema['empty_page'] = array(
+    'description' => 'The base table for empty_page callbacks.',
+    'export' => array(
+      'identifier' => 'callback',
+      'key' => 'callback_id',
+      'api' => array(
+        'owner' => 'empty_page',
+        'api' => 'callbacks_default',
+        'minimum_version' => '1',
+        'current_version' => '1',
+      ),
+    ),
+    'fields' => array(
+      'callback_id' => array(
+        'description' => 'Machine-readable name of the callback. Used as the unique ID in ctools exportables.',
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+      ),
+      'path' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'An internal Drupal path mapped to a callback.',
+      ),
+      'page_title' => array(
+        'type' => 'varchar',
+        'length' => 128,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Human-readable name of the callback. Used in place of the node title when displaying the page.',
+      ),
+      'data' => array(
+        'type' => 'text',
+        'serialize' => TRUE,
+        'not null' => FALSE,
+        'size' => 'medium',
+        'description' => 'A serialized array of additional settings. Reserved for use by plug-in modules.',
+      ),
+      'changed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Unix timestamp of the latest change.',
+      ),
+      'created' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Unix timestamp of callback creation.',
+      ),
+    ),
+    'indexes' => array(
+      'changed' => array('changed'),
+    ),
+    'primary key' => array('callback_id'),
+  );
+
+  return $schema;
+}
