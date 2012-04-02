@@ -37,29 +37,7 @@ function rga_base_default_page_manager_pages() {
     'pipeline' => 'standard',
     'css_id' => '',
     'css' => '',
-    'contexts' => array(
-      0 => array(
-        'identifier' => 'Featured Content',
-        'keyword' => 'featured_content',
-        'name' => 'node_edit_form',
-        'nid' => '5',
-        'id' => 1,
-      ),
-      2 => array(
-        'identifier' => 'Page Copy',
-        'keyword' => 'page_copy',
-        'name' => 'node_edit_form',
-        'nid' => '6',
-        'id' => 3,
-      ),
-      3 => array(
-        'identifier' => 'Footer Copy',
-        'keyword' => 'footer_copy',
-        'name' => 'node_edit_form',
-        'nid' => '7',
-        'id' => 4,
-      ),
-    ),
+    'contexts' => array(),
     'relationships' => array(),
   );
   $display = new panels_display;
@@ -112,19 +90,17 @@ function rga_base_default_page_manager_pages() {
     $pane = new stdClass;
     $pane->pid = 'new-2';
     $pane->panel = 'right';
-    $pane->type = 'form';
-    $pane->subtype = 'form';
+    $pane->type = 'block';
+    $pane->subtype = 'quicktabs-page_copy';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'context' => 'context_node_edit_form_3',
-      'override_title' => 1,
-      'override_title_text' => 'Page Copy',
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
-      'style' => 'default',
     );
     $pane->css = array();
     $pane->extras = array();
@@ -132,52 +108,8 @@ function rga_base_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-2'] = $pane;
     $display->panels['right'][0] = 'new-2';
-    $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'right';
-    $pane->type = 'form';
-    $pane->subtype = 'form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'context_node_edit_form_1',
-      'override_title' => 1,
-      'override_title_text' => 'Featured Content',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'form';
-    $pane->subtype = 'form';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'context_node_edit_form_4',
-      'override_title' => 1,
-      'override_title_text' => 'Footer Copy',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $pane->locks = array();
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-3';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['edit_home'] = $page;
@@ -241,7 +173,7 @@ function rga_base_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->pid = 'new-5';
+    $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'views';
     $pane->subtype = 'random_splash_image';
@@ -271,10 +203,10 @@ function rga_base_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-5'] = $pane;
-    $display->panels['left'][0] = 'new-5';
+    $display->content['new-3'] = $pane;
+    $display->panels['left'][0] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-4';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'system-main-menu';
@@ -292,10 +224,10 @@ function rga_base_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['right'][0] = 'new-6';
+    $display->content['new-4'] = $pane;
+    $display->panels['right'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-5';
     $pane->panel = 'right';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -323,10 +255,10 @@ function rga_base_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['right'][1] = 'new-7';
+    $display->content['new-5'] = $pane;
+    $display->panels['right'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-6';
     $pane->panel = 'right';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -353,8 +285,8 @@ function rga_base_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['right'][2] = 'new-8';
+    $display->content['new-6'] = $pane;
+    $display->panels['right'][2] = 'new-6';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

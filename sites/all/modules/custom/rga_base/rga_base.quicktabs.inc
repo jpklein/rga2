@@ -1,0 +1,96 @@
+<?php
+/**
+ * @file
+ * rga_base.quicktabs.inc
+ */
+
+/**
+ * Implements hook_quicktabs_default_quicktabs().
+ */
+function rga_base_quicktabs_default_quicktabs() {
+  $export = array();
+
+  $quicktabs = new stdClass;
+  $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
+  $quicktabs->api_version = 1;
+  $quicktabs->machine_name = 'edit_home_page';
+  $quicktabs->ajax = 0;
+  $quicktabs->hide_empty_tabs = FALSE;
+  $quicktabs->default_tab = 0;
+  $quicktabs->title = 'Edit Home Page Content';
+  $quicktabs->tabs = array(
+    0 => array(
+      'vid' => 'random_splash_image',
+      'display' => 'block_1',
+      'args' => '',
+      'title' => 'Splash Images',
+      'weight' => '-100',
+      'type' => 'view',
+    ),
+    1 => array(
+      'bid' => 'page_copy_delta_page_copy_6',
+      'hide_title' => 1,
+      'title' => 'Welcome Message',
+      'weight' => '-99',
+      'type' => 'block',
+    ),
+    2 => array(
+      'bid' => 'featured_content_delta_featured_content_5',
+      'hide_title' => 1,
+      'title' => 'Featured Projects',
+      'weight' => '-98',
+      'type' => 'block',
+    ),
+    3 => array(
+      'bid' => 'page_copy_delta_page_copy_7',
+      'hide_title' => 1,
+      'title' => 'Site Footer',
+      'weight' => '-97',
+      'type' => 'block',
+    ),
+  );
+  $quicktabs->renderer = 'quicktabs';
+  $quicktabs->style = 'Seven';
+  $quicktabs->options = array();
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Edit Home Page Content');
+  t('Featured Projects');
+  t('Site Footer');
+  t('Splash Images');
+  t('Welcome Message');
+
+  $export['edit_home_page'] = $quicktabs;
+
+  $quicktabs = new stdClass;
+  $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
+  $quicktabs->api_version = 1;
+  $quicktabs->machine_name = 'edit_scrapbook';
+  $quicktabs->ajax = 0;
+  $quicktabs->hide_empty_tabs = FALSE;
+  $quicktabs->default_tab = 0;
+  $quicktabs->title = 'Edit Scrapbook Content';
+  $quicktabs->tabs = array(
+    0 => array(
+      'vid' => 'edit_scrapbook_items',
+      'display' => 'block_1',
+      'args' => '',
+      'title' => 'Scrapbook Photos',
+      'weight' => '-100',
+      'type' => 'view',
+    ),
+  );
+  $quicktabs->renderer = 'quicktabs';
+  $quicktabs->style = 'Seven';
+  $quicktabs->options = array();
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Edit Scrapbook Content');
+  t('Scrapbook Photos');
+
+  $export['edit_scrapbook'] = $quicktabs;
+
+  return $export;
+}

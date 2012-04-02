@@ -221,8 +221,79 @@ function scrapbook_item_views_default_views() {
     'scrapbook' => 'scrapbook',
   );
 
+  /* Display: View */
+  $handler = $view->new_display('page', 'View', 'page_1');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'grid';
+  $handler->display->display_options['style_options']['columns'] = '3';
+  $handler->display->display_options['style_options']['fill_single_line'] = 1;
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Photo */
+  $handler->display->display_options['fields']['field_scrapbookimage']['id'] = 'field_scrapbookimage';
+  $handler->display->display_options['fields']['field_scrapbookimage']['table'] = 'field_data_field_scrapbookimage';
+  $handler->display->display_options['fields']['field_scrapbookimage']['field'] = 'field_scrapbookimage';
+  $handler->display->display_options['fields']['field_scrapbookimage']['label'] = '';
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_scrapbookimage']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_scrapbookimage']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_scrapbookimage']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_scrapbookimage']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_scrapbookimage']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  $handler->display->display_options['fields']['field_scrapbookimage']['field_api_classes'] = 0;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
+  $handler->display->display_options['path'] = 'scrapbook';
+
   /* Display: Edit */
-  $handler = $view->new_display('page', 'Edit', 'page_1');
+  $handler = $view->new_display('block', 'Edit', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Edit Scrapbook Items';
   $handler->display->display_options['defaults']['access'] = FALSE;
@@ -242,7 +313,7 @@ function scrapbook_item_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = '<ul class="action-links"><li><a href="/node/add/splash">Add Image</a></li></ul>';
+  $handler->display->display_options['header']['area']['content'] = '<ul class="action-links" style="margin-bottom:0"><li><a href="/node/add/scrapbook">Add Photo</a></li></ul>';
   $handler->display->display_options['header']['area']['format'] = 'plain_text';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   $handler->display->display_options['defaults']['fields'] = FALSE;
@@ -365,78 +436,6 @@ function scrapbook_item_views_default_views() {
   $handler->display->display_options['fields']['weight']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['weight']['separator'] = '';
   $handler->display->display_options['fields']['weight']['format_plural'] = 0;
-  $handler->display->display_options['path'] = 'edit/scrapbook';
-
-  /* Display: View */
-  $handler = $view->new_display('page', 'View', 'page_2');
-  $handler->display->display_options['defaults']['pager'] = FALSE;
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '9';
-  $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all'] = 0;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'grid';
-  $handler->display->display_options['style_options']['columns'] = '3';
-  $handler->display->display_options['style_options']['fill_single_line'] = 1;
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['header'] = FALSE;
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Photo */
-  $handler->display->display_options['fields']['field_scrapbookimage']['id'] = 'field_scrapbookimage';
-  $handler->display->display_options['fields']['field_scrapbookimage']['table'] = 'field_data_field_scrapbookimage';
-  $handler->display->display_options['fields']['field_scrapbookimage']['field'] = 'field_scrapbookimage';
-  $handler->display->display_options['fields']['field_scrapbookimage']['label'] = '';
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_scrapbookimage']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['field_scrapbookimage']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['field_scrapbookimage']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['field_scrapbookimage']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_scrapbookimage']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
-  $handler->display->display_options['fields']['field_scrapbookimage']['field_api_classes'] = 0;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
-  $handler->display->display_options['path'] = 'scrapbook';
   $export['edit_scrapbook_items'] = $view;
 
   return $export;
