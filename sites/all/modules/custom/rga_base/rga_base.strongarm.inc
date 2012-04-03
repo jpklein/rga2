@@ -10,49 +10,49 @@
 function rga_base_strongarm() {
   $export = array();
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_api_use_iso8601';
   $strongarm->value = 0;
   $export['date_api_use_iso8601'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_default_timezone';
   $strongarm->value = 'America/Los_Angeles';
   $export['date_default_timezone'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_first_day';
   $strongarm->value = '0';
   $export['date_first_day'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_long';
   $strongarm->value = 'l, F j, Y - g:ia';
   $export['date_format_long'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_medium';
   $strongarm->value = 'D, m/d/Y - g:ia';
   $export['date_format_medium'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'date_format_short';
   $strongarm->value = 'm/d/Y - g:ia';
   $export['date_format_short'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings';
@@ -231,28 +231,28 @@ function rga_base_strongarm() {
   );
   $export['field_bundle_settings'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'filter_fallback_format';
   $strongarm->value = 'plain_text';
   $export['filter_fallback_format'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_frontpage';
   $strongarm->value = 'home';
   $export['site_frontpage'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'site_name';
   $strongarm->value = 'Ralph Gentile Architects';
   $export['site_name'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_attributes';
@@ -572,7 +572,7 @@ foo
   );
   $export['themekey_attributes'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_maps';
@@ -760,7 +760,7 @@ foo
   );
   $export['themekey_maps'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_modules';
@@ -773,7 +773,7 @@ foo
   );
   $export['themekey_modules'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_paths';
@@ -809,7 +809,7 @@ foo
   );
   $export['themekey_paths'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'themekey_properties';
@@ -871,14 +871,14 @@ foo
   );
   $export['themekey_properties'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_default';
   $strongarm->value = 'rga12';
   $export['theme_default'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_rga12home_settings';
@@ -901,7 +901,7 @@ foo
   );
   $export['theme_rga12home_settings'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'theme_rga12_settings';
@@ -924,21 +924,21 @@ foo
   );
   $export['theme_rga12_settings'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_default';
   $strongarm->value = '0';
   $export['weight_default'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_label';
   $strongarm->value = 'List Weight';
   $export['weight_label'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_node_types';
@@ -947,21 +947,21 @@ foo
   );
   $export['weight_node_types'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_position';
   $strongarm->value = '0';
   $export['weight_position'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_range';
   $strongarm->value = '50';
   $export['weight_range'] = $strongarm;
 
-  $strongarm = new stdClass;
+  $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'weight_use_menu';

@@ -10,7 +10,7 @@
 function rga_base_quicktabs_default_quicktabs() {
   $export = array();
 
-  $quicktabs = new stdClass;
+  $quicktabs = new stdClass();
   $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
   $quicktabs->api_version = 1;
   $quicktabs->machine_name = 'edit_home_page';
@@ -63,7 +63,7 @@ function rga_base_quicktabs_default_quicktabs() {
 
   $export['edit_home_page'] = $quicktabs;
 
-  $quicktabs = new stdClass;
+  $quicktabs = new stdClass();
   $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
   $quicktabs->api_version = 1;
   $quicktabs->machine_name = 'edit_scrapbook';
@@ -80,6 +80,13 @@ function rga_base_quicktabs_default_quicktabs() {
       'weight' => '-100',
       'type' => 'view',
     ),
+    1 => array(
+      'bid' => 'page_copy_delta_page_copy_7',
+      'hide_title' => 1,
+      'title' => 'Site Footer',
+      'weight' => '-99',
+      'type' => 'block',
+    ),
   );
   $quicktabs->renderer = 'quicktabs';
   $quicktabs->style = 'Seven';
@@ -89,6 +96,7 @@ function rga_base_quicktabs_default_quicktabs() {
   // Included for use with string extractors like potx.
   t('Edit Scrapbook Content');
   t('Scrapbook Photos');
+  t('Site Footer');
 
   $export['edit_scrapbook'] = $quicktabs;
 
