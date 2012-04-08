@@ -36,6 +36,7 @@ h2 a:hover { color: #000; }
 #footer a:hover { color: #000; text-decoration: underline; }
 
 /* Page Content */
+#page-title { font: normal 18px/18px Arial,sans-serif; margin: 0 0 8px 0; color: #E79431; }
 #content { padding: 42px 28px 28px 36px; }
 .node-type-project #content { border: solid 10px white; /*background-color: black;*/ }
 
