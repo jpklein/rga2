@@ -35,17 +35,17 @@ function rga_base_quicktabs_default_quicktabs() {
       'type' => 'block',
     ),
     2 => array(
-      'bid' => 'featured_content_delta_featured_content_5',
+      'bid' => 'featured_content_delta_nodequeue_edit_1',
       'hide_title' => 1,
-      'title' => 'Featured Projects',
-      'weight' => '-98',
+      'title' => 'Recent News/Projects',
+      'weight' => '-97',
       'type' => 'block',
     ),
     3 => array(
       'bid' => 'page_copy_delta_page_copy_7',
       'hide_title' => 1,
       'title' => 'Site Footer',
-      'weight' => '-97',
+      'weight' => '-96',
       'type' => 'block',
     ),
   );
@@ -56,7 +56,7 @@ function rga_base_quicktabs_default_quicktabs() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Edit Home Page Content');
-  t('Featured Projects');
+  t('Recent News/Projects');
   t('Site Footer');
   t('Splash Images');
   t('Welcome Message');

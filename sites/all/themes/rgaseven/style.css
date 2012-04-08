@@ -995,3 +995,16 @@ div.add-or-remove-shortcuts {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+/* RGA-specific */
+
+.quicktabs-wrapper.quicktabs-style-seven .form-item-title input {
+  color: #222;
+  font-size: 12px;
+}
+.quicktabs-wrapper.quicktabs-style-seven .form-type-textfield input {
+  line-height: 1.5em;
+}
+.quicktabs-wrapper.quicktabs-style-seven .form-item-add-nid input {
+  width: 51%;
+}

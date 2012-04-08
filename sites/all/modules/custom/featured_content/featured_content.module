@@ -11,10 +11,11 @@ include_once('featured_content.features.inc');
  */
 function featured_content_block_info() {
   $blocks = array();
-  $result = db_query('SELECT title, nid FROM {node} WHERE type = :type', array(':type' => 'featured_content'));
+
+  $result = db_query('SELECT title, qid FROM {nodequeue_queue}');
   foreach ($result as $record) {
-    $blocks['featured_content_' . $record->nid] = array(
-      'info' => t('Featured Content: "@name" Form', array('@name' => $record->title)),
+    $blocks['nodequeue_edit_' . $record->qid] = array(
+      'info' => t('Nodequeue Edit: "@name" Form', array('@name' => $record->title)),
       'cache' => DRUPAL_NO_CACHE,
     );
   }
@@ -26,134 +27,154 @@ function featured_content_block_info() {
  */
 function featured_content_block_view($delta = '') {
     $block = array();
-    module_load_include('inc', 'node', 'node.pages');
-    $node = node_load(intval(str_replace('featured_content_', '', $delta)));
-    $block['subject'] = t('@title form', array('@title' => $node->title));
-    $block['content']['form'] = drupal_get_form($node->type . '_node_form', $node);
+
+    if (strpos($delta, 'nodequeue_edit_') === 0) {
+      module_load_include('inc', 'nodequeue', 'includes/nodequeue.admin');
+      if ($queue = nodequeue_load(intval(str_replace('nodequeue_edit_', '', $delta)))) {
+        // Foregoes pre-processing required for entires with multiple subqueues.
+        $subqueue = array_shift(nodequeue_load_subqueues_by_queue($queue->qid));
+        $nodes = _nodequeue_dragdrop_get_nodes($queue, $subqueue);
+        $block['content'] = drupal_get_form('featured_content_nodequeue_edit_form', $queue, $nodes, $subqueue);
+      }
+    }
     return $block;
 }
 
 /**
- * Implements hook_form_NODE_ID_alter().
+ * Implements hook_theme().
  */
-function featured_content_form_featured_content_node_form_alter(&$form, &$form_state, $form_id) {
-  // Remove lables for Title and Body fields
-  $form['title']['#title_display'] = 'none';
-  $form['field_featuredproject1']['und']['#title_display'] = 'none';
-  $form['field_featuredproject2']['und']['#title_display'] = 'none';
-  $form['field_featuredproject3']['und']['#title_display'] = 'none';
-  // Remove vertical tabs and text-format display
-  $form['#after_build'][] = '_featured_content_form_after_build';
-  // Keep user on same page after submit
-  $form['actions']['submit']['#value'] = 'Save Changes';
-  $form['actions']['submit']['#submit'][] = '_featured_content_node_form_submit';
-  // Remove Delete button
-  $form['actions']['delete']['#access'] = FALSE;
-  // Ensure node is published on form save
-  $form['#validate'][] = '_featured_content_form_validate';
-}
-
-/**
- * After-build handler for node-edit form.
- */
-function _featured_content_form_after_build($form) {
-  // Remove vertical tabs from the form
-  $form['revision_information']['#access'] = FALSE;
-  $form['author']['#access'] = FALSE;
-  $form['options']['#access'] = FALSE;
-  $form['path']['#access'] = FALSE;
-  return $form;
-}
-
-/**
- * Validation handler for node-edit form.
- */
-function _featured_content_form_validate($form, &$form_state) {
-  // We must explicitly set the publish bit when access to the node-options tab
-  // is denied, even if the content type is set to publish by default.
-  $form_state['values']['status'] = 1;
-}
-
-/**
- * Submit handler for node-edit form.
- */
-function _featured_content_node_form_submit($form, &$form_state) {
-  // Keep user on the same page after form submission
-  $form_state['redirect'] = $_GET['q'];
-}
-
-/**
- * Implements hook_field_formatter_info().
- *
- * Adds a custom formatter to configure node_reference fields for display. We do
- * this to alter the link markup so that ajax.js & Dialog API display the linked
- * node in a modal dialog on click.
- */
-function featured_content_field_formatter_info() {
+function featured_content_theme() {
   return array(
-    'node_reference_dialog' => array(
-      'label' => t('Title (modal dialog link)'),
-      'description' => t('Display the title of the referenced node as a link to display it in a modal dialog.'),
-      'field types' => array('node_reference'),
-    )
+    'featured_content_nodequeue_edit_form_table' => array(
+      'render element' => 'form',
+    ),
   );
 }
 
 /**
- * Implements hook_field_formatter_prepare_view().
- *
- * Copy of node_reference.module.. Wish there was another way to hook into this.
+ * Form definition for nodequeue drag'n'drop form.
  */
-function featured_content_field_formatter_prepare_view($entity_type, $entities, $field, $instances, $langcode, &$items, $displays) {
-  $ids = array();
-  foreach ($displays as $id => $display) {
-    if ($display['type'] != 'node_reference_nid') {
-      foreach ($items[$id] as $delta => $item) {
-        if ($item['access']) {
-          $ids[$item['nid']] = $item['nid'];
-        }
-      }
+function featured_content_nodequeue_edit_form($form, $form_state, $queue, $nodes, $subqueue) {
+  $form = array('#tree' => TRUE);
+
+  // Textfield for adding nodes to the queue.
+  $form['add'] = array(
+    '#type' => 'container',
+    '#attributes' => array('class' => array('container-inline')),
+  );
+  $form['add']['nid'] = array(
+    '#type' => 'textfield',
+    '#autocomplete_path' => 'nodequeue/autocomplete/' . $subqueue->sqid,
+    '#maxlength' => 1024,
+    '#default_value' => t('Enter the title of a node to add it to the queue'),
+    '#attributes' => array('class' => array('subqueue-add-nid')),
+  );
+  $form['add']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Add content'),
+    '#submit' => array('nodequeue_arrange_subqueue_form_add_submit'),
+  );
+
+  // Prepare the main part of the form which will be themed as a table.
+  $count = count($nodes);
+  $form['nodes'] = array();
+  $form['nodes']['#theme'] = 'featured_content_nodequeue_edit_form_table';
+
+  // Theme function needs these.
+  $form['nodes']['#queue']    = (array) $queue;
+  $form['nodes']['#subqueue'] = (array) $subqueue;
+
+  foreach ($nodes as $node) {
+    $form['nodes'][$node->nid]['#node'] = (array) $node;
+
+    $form['nodes'][$node->nid]['title'] = ($node->visible)
+      ? array('#markup' => l($node->title, 'node/' . $node->nid))
+      : array('#value' => t('Restricted node, NID: @nid', array('@nid' => $node->nid)));
+
+    if (node_access('update', $node)) {
+      $form['nodes'][$node->nid]['edit'] = array('#markup' => l(t('edit'), 'node/' . $node->nid . '/edit', array('attributes' => array('title' => t('Edit this node')))));
     }
+
+    $attr = array(
+      '#attributes' => array(
+        'title' => t('Remove from queue'),
+        'style' => 'display: none;',
+        'class' => array('nodequeue-remove'),
+        'id' => 'nodequeue-remove-' . $node->nid,
+      ),
+      'query' => nodequeue_get_query_string($node->nid, TRUE),
+    );
+    $form['nodes'][$node->nid]['remove'] = array('#markup' => l(t('remove'), 'nodequeue/' . $queue->qid . '/remove-node/' . $subqueue->sqid . '/' . $node->nid, $attr));
+
+    $form['nodes'][$node->nid]['position'] = array(
+      '#type' => 'position',
+      '#delta' => $count,
+      '#default_value' => $node->position,
+      '#attributes' => array(
+        'class' => array('node-position'),
+      ),
+    );
   }
-  $entities = node_load_multiple($ids);
-  foreach ($displays as $id => $display) {
-    if ($display['type'] != 'node_reference_nid') {
-      foreach ($items[$id] as $delta => $item) {
-        if ($item['access']) {
-          $items[$id][$delta]['node'] = $entities[$item['nid']];
-        }
-      }
-    }
+
+  // Submit, reverse, shuffle, and clear actions.
+  $form['actions'] = array('#type' => 'actions');
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save Changes'),
+    '#submit' => array('nodequeue_arrange_subqueue_form_submit'),
+  );
+
+  // Disable all buttons if the queue is empty.
+  if ($count == 0) {
+    $form['actions']['submit']['#disabled']  = TRUE;
   }
+
+  return $form;
 }
 
 /**
- * Implements hook_field_formatter_view().
- *
- * Where the rubber hits the road. We add the 'nojs' marker to the end of #href
- * and add css classes to tell ajax.js & Dialog API to process the link element.
+ * Theme the subqueue overview as a sortable list.
  */
-function featured_content_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $result = array();
-  foreach ($items as $delta => $item) {
-    if ($item['access']) {
-      $node = $item['node'];
-      $label = entity_label('node', $node);
-      $uri = entity_uri('node', $node);
-      $result[$delta] = array(
-        '#type' => 'link',
-        '#title' => $label,
-        '#href' => drupal_lookup_path('alias', $uri['path']) . '/nojs',
-        '#options' => $uri['options'],
-      );
-      $result[$delta]['#options']['attributes']['class'] = array(
-        'use-ajax', 'use-dialog'
-      );
-      if (!$node->status) {
-        $result[$delta]['#prefix'] = '<span class="node-unpublished">';
-        $result[$delta]['#suffix'] = '</span>';
-      }
+function theme_featured_content_nodequeue_edit_form_table($variables) {
+  $output = '';
+
+  // Get css to hide some of the help text if javascript is disabled.
+  drupal_add_css(drupal_get_path('module', 'nodequeue') . '/nodequeue.css');
+
+  $form = $variables['form'];
+  $table_id = 'nodequeue-dragdrop-' . $form['#subqueue']['sqid'];
+  $table_classes = array(
+    'nodequeue-dragdrop',
+    'nodequeue-dragdrop-qid-' . $form['#subqueue']['qid'],
+    'nodequeue-dragdrop-sqid-' . $form['#subqueue']['sqid'],
+    'nodequeue-dragdrop-reference-' . $form['#subqueue']['reference'],
+  );
+  drupal_add_tabledrag($table_id, 'order', 'sibling', 'node-position');
+  drupal_add_js(drupal_get_path('module', 'nodequeue') . '/nodequeue_dragdrop.js');
+
+  $reverse[str_replace('-', '_', $table_id)] = (bool) $form['#queue']['reverse'];
+  drupal_add_js(array('nodequeue' => array('reverse' => $reverse)), array('type' => 'setting', 'scope' => JS_DEFAULT));
+
+  // Render form as table rows.
+  $rows = array();
+  foreach (element_children($form) as $key) {
+    if (isset($form[$key]['title'])) {
+      $row = array();
+      $row[] = drupal_render($form[$key]['title']);
+      $row[] = drupal_render($form[$key]['position']);
+      $row[] = (!empty($form[$key]['edit'])) ? drupal_render($form[$key]['edit']) : '&nbsp;';
+      $row[] = drupal_render($form[$key]['remove']);
+
+      $rows[] = array('data'  => $row, 'class' => array('draggable'));
     }
   }
-  return $result;
+  if (empty($rows)) {
+    $rows[] = array(array('data' => t('No nodes in this queue.'), 'colspan' => 7));
+  }
+
+  // Render the main nodequeue table.
+  $header = array(t('Title'), t('Position'), array('data' => t('Operations'), 'colspan' => 2));
+  $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => $table_classes)));
+
+  return $output;
 }
