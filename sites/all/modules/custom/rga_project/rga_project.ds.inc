@@ -1,16 +1,16 @@
 <?php
 /**
  * @file
- * projects.ds.inc
+ * rga_project.ds.inc
  */
 
 /**
  * Implements hook_ds_field_settings_info().
  */
-function projects_ds_field_settings_info() {
+function rga_project_ds_field_settings_info() {
   $export = array();
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|project|default';
   $ds_fieldsetting->entity_type = 'node';
@@ -49,7 +49,7 @@ function projects_ds_field_settings_info() {
   );
   $export['node|project|default'] = $ds_fieldsetting;
 
-  $ds_fieldsetting = new stdClass;
+  $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|project|full';
   $ds_fieldsetting->entity_type = 'node';
@@ -94,10 +94,10 @@ function projects_ds_field_settings_info() {
 /**
  * Implements hook_ds_layout_settings_info().
  */
-function projects_ds_layout_settings_info() {
+function rga_project_ds_layout_settings_info() {
   $export = array();
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|project|default';
   $ds_layout->entity_type = 'node';
@@ -125,7 +125,7 @@ function projects_ds_layout_settings_info() {
   );
   $export['node|project|default'] = $ds_layout;
 
-  $ds_layout = new stdClass;
+  $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|project|full';
   $ds_layout->entity_type = 'node';

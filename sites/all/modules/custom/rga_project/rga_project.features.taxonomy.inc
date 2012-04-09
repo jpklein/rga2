@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * projects.features.taxonomy.inc
+ * rga_project.features.taxonomy.inc
  */
 
 /**
  * Implements hook_taxonomy_default_vocabularies().
  */
-function projects_taxonomy_default_vocabularies() {
+function rga_project_taxonomy_default_vocabularies() {
   return array(
     'project_type' => array(
       'name' => 'Project Type',

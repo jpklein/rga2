@@ -1,28 +1,28 @@
 <?php
 /**
  * @file
- * Code for the Projects feature.
+ * Code for the RGA Projects feature.
  */
 
-include_once('projects.features.inc');
+include_once('rga_project.features.inc');
 
 /**
  * Implementation of hook_menu().
  *
  * Enable Project nodes to be viewed in a jQuery UI modal Dialog.
  */ 
-function projects_menu() {
+function rga_project_menu() {
   return array(
     'projects/%/%dialog_js' => array(
       'access arguments' => array('access content'),
-      'page callback' => 'projects_ajax_callback',
+      'page callback' => 'rga_project_ajax_callback',
       'page arguments' => array(1, 2),
       'type' => MENU_CALLBACK,
     ),
   );
 }
 
-function projects_ajax_callback($url_alias, $js) {
+function rga_project_ajax_callback($url_alias, $js) {
   if ($path = drupal_lookup_path('source', 'projects/'. $url_alias)) {
     $nid = str_replace('node/', '', $path);
     $nodes = entity_load('node', array($nid));
@@ -56,7 +56,7 @@ function projects_ajax_callback($url_alias, $js) {
     drupal_static_reset('drupal_add_js');
     drupal_static_reset('drupal_add_css');
     $node->content['#attached']['library'] = array(array('dialog', 'dialog'));
-    $project_path = drupal_get_path('module', 'projects');
+    $project_path = drupal_get_path('module', 'rga_project');
     drupal_add_js($project_path . '/js/galleryformatter.js');
     drupal_add_css(drupal_get_path('module', 'galleryformatter') . '/theme/galleryformatter.css');
     drupal_add_css($project_path . '/css/projectgallery.css');
@@ -87,15 +87,15 @@ function projects_ajax_callback($url_alias, $js) {
  *
  * Override default style of jQuery UI Dialog elements.
  */
-function projects_library_alter(&$libraries, $module) {
+function rga_project_library_alter(&$libraries, $module) {
   if ($module == 'system' && isset($libraries['ui.dialog'])) {
     if (isset($libraries['ui']['css']['misc/ui/jquery.ui.theme.css'])) {
       unset($libraries['ui']['css']['misc/ui/jquery.ui.theme.css']);
-      $new_path = drupal_get_path('module', 'projects') . '/css/jquery.ui.theme.css';
+      $new_path = drupal_get_path('module', 'rga_project') . '/css/jquery.ui.theme.css';
       $libraries['ui']['css'][$new_path] = array();
     }
     $libraries['ui.dialog']['css'] = array(
-      drupal_get_path('module', 'projects') . '/css/jquery.ui.dialog.css' => array(),
+      drupal_get_path('module', 'rga_project') . '/css/jquery.ui.dialog.css' => array(),
     );
   }
 }
@@ -105,10 +105,10 @@ function projects_library_alter(&$libraries, $module) {
  *
  * Run altered version of galleryformatter.js
  */
-function projects_js_alter(&$javascript) {
+function rga_project_js_alter(&$javascript) {
   $old = drupal_get_path('module', 'galleryformatter') . '/theme/galleryformatter.js';
   if (isset($javascript[$old])) {
-    $new = drupal_get_path('module', 'projects') . '/js/galleryformatter.js';
+    $new = drupal_get_path('module', 'rga_project') . '/js/galleryformatter.js';
     $javascript[$old]['data'] = $new;
   }
 }
@@ -118,7 +118,7 @@ function projects_js_alter(&$javascript) {
  *
  * Provides a custom css-style setting for the Gallery Formatter module.
  */
-function projects_galleryformatter_styles() {
-  $file_uri = drupal_get_path('module', 'projects') . '/css/projectgallery.css';
+function rga_project_galleryformatter_styles() {
+  $file_uri = drupal_get_path('module', 'rga_project') . '/css/projectgallery.css';
   return array(file_stream_wrapper_uri_normalize($file_uri) => 'Projectgallery');
 }

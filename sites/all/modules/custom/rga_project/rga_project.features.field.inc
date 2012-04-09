@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * projects.features.field.inc
+ * rga_project.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function projects_field_default_fields() {
+function rga_project_field_default_fields() {
   $fields = array();
 
   // Exported field: 'node-project-body'
