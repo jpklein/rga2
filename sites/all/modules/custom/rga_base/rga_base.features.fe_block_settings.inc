@@ -27,6 +27,20 @@ function rga_base_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['quicktabs-edit_projects'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_projects',
+    'theme' => 'rga12',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
   $theme['quicktabs-edit_scrapbook'] = array(
     'module' => 'quicktabs',
     'delta' => 'edit_scrapbook',
@@ -158,6 +172,20 @@ function rga_base_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['quicktabs-edit_projects'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_projects',
+    'theme' => 'rga12home',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
   $theme['quicktabs-edit_scrapbook'] = array(
     'module' => 'quicktabs',
     'delta' => 'edit_scrapbook',
@@ -286,6 +314,20 @@ function rga_base_default_fe_block_settings() {
     'visibility' => '0',
     'pages' => '',
     'title' => '<none>',
+    'cache' => '1',
+  );
+
+  $theme['quicktabs-edit_projects'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_projects',
+    'theme' => 'rgaseven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => '1',
   );
 

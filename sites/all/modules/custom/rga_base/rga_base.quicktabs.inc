@@ -66,6 +66,43 @@ function rga_base_quicktabs_default_quicktabs() {
   $quicktabs = new stdClass();
   $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
   $quicktabs->api_version = 1;
+  $quicktabs->machine_name = 'edit_projects';
+  $quicktabs->ajax = 0;
+  $quicktabs->hide_empty_tabs = FALSE;
+  $quicktabs->default_tab = 0;
+  $quicktabs->title = 'Edit Projects Content';
+  $quicktabs->tabs = array(
+    0 => array(
+      'vid' => 'edit_projects',
+      'display' => 'block_1',
+      'args' => '',
+      'title' => 'Project Galleries',
+      'weight' => '-100',
+      'type' => 'view',
+    ),
+    1 => array(
+      'bid' => 'page_copy_delta_page_copy_7',
+      'hide_title' => 1,
+      'title' => 'Site Footer',
+      'weight' => '-99',
+      'type' => 'block',
+    ),
+  );
+  $quicktabs->renderer = 'quicktabs';
+  $quicktabs->style = 'Seven';
+  $quicktabs->options = array();
+
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Edit Projects Content');
+  t('Project Galleries');
+  t('Site Footer');
+
+  $export['edit_projects'] = $quicktabs;
+
+  $quicktabs = new stdClass();
+  $quicktabs->disabled = FALSE; /* Edit this to true to make a default quicktabs disabled initially */
+  $quicktabs->api_version = 1;
   $quicktabs->machine_name = 'edit_scrapbook';
   $quicktabs->ajax = 0;
   $quicktabs->hide_empty_tabs = FALSE;
