@@ -41,6 +41,20 @@ function rga_base_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['quicktabs-edit_studio_content'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_studio_content',
+    'theme' => 'rga12',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
   $theme['system-main'] = array(
     'module' => 'system',
     'delta' => 'main',
@@ -155,6 +169,20 @@ function rga_base_default_fe_block_settings() {
     'visibility' => '0',
     'pages' => '',
     'title' => '<none>',
+    'cache' => '1',
+  );
+
+  $theme['quicktabs-edit_studio_content'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_studio_content',
+    'theme' => 'rga12home',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
     'cache' => '1',
   );
 
@@ -275,12 +303,26 @@ function rga_base_default_fe_block_settings() {
     'cache' => '1',
   );
 
+  $theme['quicktabs-edit_studio_content'] = array(
+    'module' => 'quicktabs',
+    'delta' => 'edit_studio_content',
+    'theme' => 'rgaseven',
+    'status' => 0,
+    'weight' => '0',
+    'region' => '',
+    'custom' => '0',
+    'visibility' => '0',
+    'pages' => '',
+    'title' => '',
+    'cache' => '1',
+  );
+
   $theme['system-main'] = array(
     'module' => 'system',
     'delta' => 'main',
     'theme' => 'rgaseven',
     'status' => '1',
-    'weight' => '-13',
+    'weight' => '-14',
     'region' => 'content',
     'custom' => '0',
     'visibility' => '0',
