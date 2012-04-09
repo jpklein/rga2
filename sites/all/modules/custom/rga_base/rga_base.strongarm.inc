@@ -99,33 +99,6 @@ function rga_base_strongarm() {
           'display' => array(),
         ),
       ),
-      'featured_content' => array(
-        'view_modes' => array(
-          'full' => array(
-            'custom_settings' => FALSE,
-          ),
-          'teaser' => array(
-            'custom_settings' => FALSE,
-          ),
-          'rss' => array(
-            'custom_settings' => FALSE,
-          ),
-          'token' => array(
-            'custom_settings' => FALSE,
-          ),
-        ),
-        'extra_fields' => array(
-          'form' => array(
-            'title' => array(
-              'weight' => '0',
-            ),
-            'path' => array(
-              'weight' => '4',
-            ),
-          ),
-          'display' => array(),
-        ),
-      ),
       'page_copy' => array(
         'view_modes' => array(
           'full' => array(
