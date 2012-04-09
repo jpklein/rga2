@@ -38,7 +38,17 @@ h2 a:hover { color: #000; }
 /* Page Content */
 #page-title { font: normal 18px/18px Arial,sans-serif; margin: 0 0 8px 0; color: #E79431; }
 #content { padding: 42px 28px 28px 36px; }
-.node-type-project #content { border: solid 10px white; /*background-color: black;*/ }
+
+body.page-studio .field-name-body p,
+body.page-node .node-profile .field-name-body p { margin: 10px -10px 10px 0; }
+
+/* Profile Pages */
+body.page-node .node-profile .field-name-field-profileemail { margin-bottom: 14px; }
+body.page-node .node-profile .field-name-field-profileemail a { color: #000; }
+body.page-node .node-profile .field-name-field-profileemail a:hover { color: #E79431; }
+body.page-node .node-profile .field-name-field-profilephoto { float: left; position: relative; padding-top: 2px; width: 240px; }
+body.page-node .node-profile .field-name-body { color: #2F1F0E; font: normal 10px/120% Verdana, Helvetica, sans-serif; margin-left: 240px; }
+
 
 /* Projects */
 
@@ -98,27 +108,7 @@ h2 a:hover { color: #000; }
 .view-item-press-list .view-data-node-body {
   padding: 0 0 0 2px;
 }
-/* profile-item */
-.view-item-profile {
-  padding-left: 240px;
-  color: #2F1F0E;
-  font: normal 10px/120% Verdana, Helvetica, sans-serif;
-}
-.view-item-profile .field-field-profile-image {
-  float: left; position: relative;
-  margin-left: -240px;
-  padding-top: 2px;
-  width: 240px;
-}
-.view-item-profile .field-data-node-title {
-  padding: 0;
-  background: none;
-  font-weight: bold;
-}
-.field-field-email { margin-bottom: 14px; }
-.field-field-email a { color: #000; }
-.field-field-email a:hover { color: #E79431; }
-.view-item-profile p { margin: 10px -10px 10px 0; }
+
 /* project-list */
 #node-42 h2 {
   clear: both;
@@ -165,17 +155,10 @@ h2 a:hover { color: #000; }
 .more-link a:after { content: " \BB"; }
 
 /* scrapbook-list */
-.views-view-grid td, .views-field { width: 200px; }
-.views-view-grid td { vertical-align: top; }
-.views-field { background: transparent url(../img/bg-scrapbook.gif) repeat-y top left; }
-.views-field-title .field-content {
-  display: block;
-  padding: 2px 4px 4px;
-  color: #FFF;
-  font: bold 11px/13px Verdana,Arial,sans-serif;
-  margin-bottom: 14px;
-
-}
+.page-scrapbook .views-view-grid td, .views-field { width: 200px; }
+.page-scrapbook .views-view-grid td { vertical-align: top; }
+.page-scrapbook .views-field { background: transparent url(../img/bg-scrapbook.gif) repeat-y top left; }
+.page-scrapbook .views-field-title .field-content { display: block; padding: 2px 4px 4px; color: #FFF; font: bold 11px/13px Verdana,Arial,sans-serif; margin-bottom: 14px; }
 
 /* studio-panel */
 .panel-2col-stacked { overflow: visible; }
