@@ -45,12 +45,38 @@ function rga_project_views_default_views() {
     'project_type' => 'project_type',
     'tags' => 0,
   );
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['label'] = '';
+  $handler->display->display_options['fields']['path']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['path']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['path']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['path']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['path']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['path']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['path']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['path']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['path']['absolute'] = 0;
   /* Field: Content: Teaser Image */
   $handler->display->display_options['fields']['field_project_teaser_image']['id'] = 'field_project_teaser_image';
   $handler->display->display_options['fields']['field_project_teaser_image']['table'] = 'field_data_field_project_teaser_image';
   $handler->display->display_options['fields']['field_project_teaser_image']['field'] = 'field_project_teaser_image';
   $handler->display->display_options['fields']['field_project_teaser_image']['label'] = '';
-  $handler->display->display_options['fields']['field_project_teaser_image']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_project_teaser_image']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_project_teaser_image']['alter']['text'] = '<a href="[path]/nojs" class="use-ajax use-dialog">[field_project_teaser_image]</a>';
   $handler->display->display_options['fields']['field_project_teaser_image']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['field_project_teaser_image']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['field_project_teaser_image']['alter']['external'] = 0;
@@ -73,7 +99,7 @@ function rga_project_views_default_views() {
   $handler->display->display_options['fields']['field_project_teaser_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_project_teaser_image']['settings'] = array(
     'image_style' => '',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   $handler->display->display_options['fields']['field_project_teaser_image']['field_api_classes'] = 0;
   /* Field: Content: Title */
@@ -81,7 +107,8 @@ function rga_project_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<a href="[path]/nojs" class="use-ajax use-dialog">[title]</a>';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
   $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['title']['alter']['external'] = 0;
@@ -101,7 +128,7 @@ function rga_project_views_default_views() {
   $handler->display->display_options['fields']['title']['hide_empty'] = 0;
   $handler->display->display_options['fields']['title']['empty_zero'] = 0;
   $handler->display->display_options['fields']['title']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 0;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_location']['id'] = 'field_location';
   $handler->display->display_options['fields']['field_location']['table'] = 'field_data_field_location';
